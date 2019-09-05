@@ -5,6 +5,7 @@ namespace TextBox.Domain.Models
       public int Id { get; set; }
       public string Title { get; set; }
       public string Publisher { get; set; }
+      public string BookCover { get; set; }
       public string Synopsis { get; set; }
       public List<Author> BookAuthors { get; set; }
       public List<Genre> BookGenres { get; set; }
