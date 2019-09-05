@@ -10,6 +10,8 @@ namespace TextBox.Domain.Models
       public List<Genre> BookGenres { get; set; }
       public string  Series { get; set; }
       public decimal Cost { get; set; }
+      public string ISBN { get; set; }
+      public int Pages { get; set; }
       public DateTime ReleaseDate { get; set; }
       public double AverageRating { get; set; }
       public List<Reviews> userReviews { get; set; }
