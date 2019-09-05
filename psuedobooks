@@ -1,0 +1,26 @@
+class Books
+{
+	class bookInfo
+		- string bookTitle
+		- string bookPublisher
+		- string bookSynopsis
+		- string bookPages
+		- decimal bookCost
+		- datetime releaseDate
+	class List<Authors> bookAuthors
+	class bookImage
+	class bookSeries
+	class List<Review> userReviews (250 limit)
+	class averageRating
+	class List<Genre> bookGenre
+	class List<Recommended> allRecommedations
+}
+
+class Users
+{
+	string firstName
+	string lastName
+	class Cart userCart
+	class List<Order> userOrder
+
+}
