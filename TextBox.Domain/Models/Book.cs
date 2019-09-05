@@ -16,6 +16,7 @@ namespace TextBox.Domain.Models
       public decimal Cost { get; set; }
       public string ISBN { get; set; }
       public int Pages { get; set; }
+      public int AmountSold { get; set; }
       public DateTime ReleaseDate { get; set; }
       public double AverageRating { get; set; }
       public List<Review> userReviews { get; set; }
