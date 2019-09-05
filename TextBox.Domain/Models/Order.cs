@@ -1,6 +1,8 @@
+using System.Collections.Generic;
+
 namespace TextBox.Domain.Models
 {
-    class Order
+    public class Order
     {
         public int Id { get; set; }
         public List<Book> BooksOnOrder { get; set; }

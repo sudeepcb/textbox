@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TextBox.Domain.Models
 {
     public class User

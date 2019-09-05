@@ -1,6 +1,6 @@
 namespace TextBox.Domain.Models
 {
-    class Review
+    public class Review
     {
         public int Id { get; set; }
         public User ReviewWriter { get; set; }

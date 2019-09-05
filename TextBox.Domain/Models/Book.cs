@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace TextBox.Domain.Models
 {
     public class Book
@@ -15,6 +18,6 @@ namespace TextBox.Domain.Models
       public int Pages { get; set; }
       public DateTime ReleaseDate { get; set; }
       public double AverageRating { get; set; }
-      public List<Reviews> userReviews { get; set; }
+      public List<Review> userReviews { get; set; }
     }
 }
