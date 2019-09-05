@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TextBox.Data\TextBox.Data.csproj" />
-    <ProjectReference Include="..\TextBox.Client\TextBox.Client.csproj" />
+    <ProjectReference Include="..\TextBox.MVCClient\TextBox.MVCClient.csproj" />
   </ItemGroup>
 
 </Project>
