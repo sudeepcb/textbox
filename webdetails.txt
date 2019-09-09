@@ -1,39 +1,37 @@
 register page:
-	First Name
-	Last Name
-	Username
-	Password (try hashing maybe????)
-	confirm password
+	First Name +
+	Last Name +
+	Username +
+	Password + (try hashing maybe????)
+	confirm password +
 
-	-----Create account Button (redirect to where they came from)---- or cancel
+	-----Create account Button (redirect to where they came from (auto login))---- or cancel +
 	**By signing in or creating an account you are agreeing to our Terms of Use and our Privacy Policy**
 
 
 
 
-(ANYONE CAN VIEW)
+(ANYONE CAN VIEW) +
 MAINPAGE:
-	---SHARED PAGE(sign in (view account details)
+	---SHARED PAGE(sign in (view account details) +
 	cart
 	categories to use for the search filter
 	search bar
 	categories to select just to redirect them to all the collections of the categories) ****** PART OF THE SHARED VIEWS 
-	a showcase or an image that highlights our store (like a full size logo, with a shevles showing many of the different generes offered (catcher to the webpage))
-	pre-defined categories (new releases, top 100, new york bestseller) (start off by showing a defalt one but user can select and show it then)
+	(MAYBE) showcase or an image that highlights our store (like a full size logo, with a shevles showing many of the different generes offered (catcher to the webpage))
+	pre-defined categories + (new releases, top 100, new york bestseller) (start off by showing a defalt one but user can select and show it then)
+
 (ANYONE CAN VIEW)
-
-
-
 Books Page:
-	---SHARED PAGE(sign in (view account details)
+	---SHARED PAGE(sign in (view account details) +
 	cart
 	categories to use for the search filter
 	search bar
 	categories to select just to redirect them to all the collections of the categories) ****** PART OF THE SHARED VIEWS 
-	add a filter to show only books at a specific price range ($5-$10), ($10-$25)
-	Title of the category selected
-	Image of all the books???? 
-	Filters:
+	add a filter to show only books at a specific price range ($5-$10), ($10-$25) +
+	Title of the category selected +
+	Image of all the books???? +
+	Filters: +
 		- (how many to show per page (20 or 40))
 		- Sort by:
 			- Best selling in the specific genre or category selected
@@ -42,26 +40,24 @@ Books Page:
 			- highest rated
 			- price (low to high: high to low)
 			- title (a to z: z to a)
-	Listing of the books in the genre or category selected (default filter selected (change dynamically as user changes))
-	-- SHARED FOR BOOKS PAGE, SPECIFIC BOOK PAGE AND ORDERS
+	Listing of the books in the genre or category selected (default filter selected (change dynamically as user changes)) +
+	-- SHARED FOR BOOKS PAGE, SPECIFIC BOOK PAGE AND ORDERS +
 	 ********** RECOMMENDED BOOKS USING THE GENRE SELECTED ********
+
+
+
 (ANYONE CAN VIEW)
-
-
-
-
-
-Specific book page:
-	---SHARED PAGE(sign in (view account details)
+Specific book page: +
+	---SHARED PAGE(sign in (view account details) +
 	cart
 	categories to use for the search filter
 	search bar
 	categories to select just to redirect them to all the collections of the categories) ****** PART OF THE SHARED VIEWS 
 	show everything from the book class except for the id
-	Top: (left of this have the book cover shown)
+	Top: (left of this have the book cover shown) +
 		- book title
 		- book authors
-	Bottom: flex box or a box
+	Bottom: flex box or a box +
 				- publisher
 				- synopsis
 				- Genres
@@ -69,34 +65,39 @@ Specific book page:
 				- ISBN
 				- #Pages
 				- Release Date
-	******* ORDER NOW ****** (CHECK MARK TO SIGNFY IT WAS ADDED (CLICK AGAIN TO REMOVE (if possible)))
-	Bottom of Bottom: BOX
+	******* ORDER NOW ****** (CHECK MARK TO SIGNFY IT WAS ADDED (CLICK AGAIN TO REMOVE (if possible))) ++
+	-- SHARED FOR BOOKS PAGE (BOTTOM SPECIFIC BOOK PAGE AND ORDERS +
+	********** RECOMMENDED BOOKS USING THE GENRE SELECTED ********
+	Bottom of Bottom: BOX +
 		- the overall average rating
 		- all the user reviews (each with its own box)
-	-- SHARED FOR BOOKS PAGE (BOTTOM SPECIFIC BOOK PAGE AND ORDERS
-	********** RECOMMENDED BOOKS USING THE GENRE SELECTED ********
 
 
 
 
 (ANYONE CAN VIEW)
 CARTS PAGE:
-	---SHARED PAGE(sign in (view account details)
+	---SHARED PAGE(sign in (view account details) +
 	cart
 	categories to use for the search filter
 	search bar
 	categories to select just to redirect them to all the collections of the categories) ****** PART OF THE SHARED VIEWS 
-	for each BOOK in the page:
+	for each BOOK in the page: ++
 		- SHOW small image
 		- book title
 		- authors
 		- price 
-	on the right of all the books:
+	on the right of all the books: ++
 		Order Summary
 			- order total
 			- Order Books Button (ONLY LOGGED IN USERS CAN CONTINUE TO VIEW THIS PAGE)
 				- once clicked: page for adding the credit card information
-	-- SHARED FOR BOOKS PAGE (BOTTOM SPECIFIC BOOK PAGE AND ORDERS
+	-- SHARED FOR BOOKS PAGE (BOTTOM SPECIFIC BOOK PAGE AND ORDERS++
+
+
+(ONLY USER CAN VIEW)
+ORDER HISTORY PAGE:
+	- ALL THE ORDERS INFORM ATION (EACH BOX IS A BOOK ORDER)
 	********** RECOMMENDED BOOKS USING THE GENRE SELECTED ********
 
 

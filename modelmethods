@@ -1,0 +1,18 @@
+MODEL USER:
+	//CHECKUSER
+	- ADDTOLISTOFORDERS
+	- VIEWORDERSLIST
+	- GETUSERINFO
+	- ADDUSER
+	- UPDATEUSERINFO
+	- DELETEUSER
+	- CHECKREVIEWSAVALIABLE
+MODEL BOOKS
+	- book
+	- genre
+	- get all books
+	- for each genre in db.Genre
+	{
+		get all the books in the genre
+	}
+	
