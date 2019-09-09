@@ -1,0 +1,33 @@
+TextBox User Stores
+
+LOGIN/USER
+--should be able to login
+--should be able to create a login if they don't have one
+  or want a new one
+--user can see order history and reorder items if they wish
+--can change personal information password,firstname
+  ,last etc
+--User can review books they have purchased based on a 
+  1-5 star scale 
+
+BOOK PAGE
+--view current selection of Books available for purchase
+--search the selection of Books based on based on number
+  of categories Ex: Name of Author,Series Name, By Genre
+  ,Name of Book
+--search bar for more specified searches 
+--every book for sell has it own page which includes 
+  revalent information about book Ex: Cost,Author,Genre etc
+
+CART
+--Place chosen books into a cart for potential ordering
+--Cart item can be removed or increased in amount depending 
+  on need
+--cart will gives current cost based on contents of cart
+--can place an order based on current cart items
+
+Order
+--can put in credit card information to make purchases
+--credit card are **NOT SAVED**
+--once purchasing is complete order is added to order 
+  history
