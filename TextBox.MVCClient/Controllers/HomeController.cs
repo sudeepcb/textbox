@@ -10,7 +10,7 @@ namespace TextBox.MVCClient.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int i, List <Book> library)
         {
             return View();
         }
