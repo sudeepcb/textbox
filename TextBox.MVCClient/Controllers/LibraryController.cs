@@ -4,23 +4,36 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TextBox.Domain.Models;
 using TextBox.MVCClient.Models;
 
 namespace TextBox.MVCClient.Controllers
 {
     public class LibraryController : Controller
     {
+
+      LibraryModel l = new LibraryModel();
         public IActionResult Home()
         {
             return View();
         }
-        public IActionResult SortCat()
+
+        [HttpPost]
+        public IActionResult displayLibrary(List<Book> library)
         {
-            return View();
+            return View(library);
         }
-        public IActionResult SortPar()
+
+        [HttpPost]
+        public IActionResult SortCat(int i, List <Book> library)
         {
-            return View();
+            return displayLibrary(l.SortLib(i,library));
+        }
+        
+        [HttpPost]
+        public IActionResult SearchPar(int i, List <Book> library)
+        {
+            return displayLibrary(l.SearchAuthor(i,library));
         }
 
         public IActionResult Privacy()
