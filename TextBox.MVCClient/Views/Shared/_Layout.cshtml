@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TextBox.MVCClient</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TextBox</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,12 @@
                         </li>
                     </ul>
                 </div>
+                <form class="form-inline md-form mr-auto mb-4 " asp-controller="Home" asp-action="Index">
+                <div class = "search">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"name="SearchString">
+                  <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Find Books</button>
+                </div>
+                </form>
             </div>
         </nav>
     </header>
@@ -48,7 +54,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - TextBox.MVCClient - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2019 - TextBox - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 

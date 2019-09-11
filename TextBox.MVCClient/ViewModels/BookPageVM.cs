@@ -10,5 +10,8 @@ namespace TextBox.MVCClient.ViewModels
        public List<Books> allBooks { get; set; }
        public List<Genre> allGenres { get; set; }
 
+       public List<Author> allAuthors { get; set; }
+       public List<string> allSeries { get; set; }
+
     }
 }

@@ -1,0 +1,63 @@
+@model TextBox.MVCClient.ViewModels.BookPageVM
+
+<!-- Default dropright button -->
+<div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="1">
+    Genre
+  </button>
+  <div class="dropdown-menu">
+    @foreach (var item in Model.allGenres)
+    {
+     @Html.ActionLink(
+       linkText : item.Name,
+       actionName: "GetAllBooks"
+       controllerName: "Library"
+       routeValues: new{
+         index = 1,
+         filterName = item.Name
+       },
+       htmlAttributes: null
+      )   
+    }
+  </div>
+</div>
+<div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="2">
+    Authors
+  </button>
+  <div class="dropdown-menu">
+    @foreach (var item in Model.allAuthors)
+    {
+     @Html.ActionLink(
+       linkText : item.Name,
+       actionName: "GetAllBooks"
+       controllerName: "Library"
+       routeValues: new{
+         index = 2,
+         filterName = item.Name
+       },
+       htmlAttributes: null
+      )   
+    }
+  </div>
+</div>
+<div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="3">
+    Series 
+  </button>
+  <div class="dropdown-menu">
+    @foreach (var item in Model.allSeries)
+    {
+     @Html.ActionLink(
+       linkText : item.Name,
+       actionName: "GetAllBooks"
+       controllerName: "Library"
+       routeValues: new{
+         index = 3,
+         filterName = item.Name
+       },
+       htmlAttributes: null
+      )   
+    }
+  </div>
+</div>
