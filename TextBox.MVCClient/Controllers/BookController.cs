@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TextBox.Domain.Models;
 using TextBox.MVCClient.Models;
 
 namespace TextBox.MVCClient.Controllers
@@ -13,6 +14,17 @@ namespace TextBox.MVCClient.Controllers
         public IActionResult Detail()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+          return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Book book,Author author,Genre genre)
+        {
+
+          return View();
         }
         public IActionResult UserDetails()
         {
