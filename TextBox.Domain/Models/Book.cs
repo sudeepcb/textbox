@@ -20,5 +20,13 @@ namespace TextBox.Domain.Models
       public DateTime ReleaseDate { get; set; }
       public double AverageRating { get; set; }
       public List<Review> userReviews { get; set; }
+
+      public Book()
+      {
+        List<Author> BookAuthors = new List<Author>();
+        List<Genre> BookGenres = new List<Genre>();
+        List<Review> userReviews = new List<Review>();
+        
+      }
     }
 }
