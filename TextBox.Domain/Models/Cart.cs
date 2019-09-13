@@ -10,5 +10,10 @@ namespace TextBox.Domain.Models
 
         public int UserId { get; set; }
         public User User { get; set; }
+
+        Cart()
+        {
+          List<Book> BooksInCart = new List<Book>();
+        }
     }
 }
