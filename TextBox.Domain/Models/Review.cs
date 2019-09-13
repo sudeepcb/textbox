@@ -6,6 +6,6 @@ namespace TextBox.Domain.Models
         public double RatingScore { get; set; }
         public User ReviewWriter { get; set; }
         public string ReviewTitle { get; set; }        
-         public string Content { get; set; }
+        public string Content { get; set; }
     }
 }
