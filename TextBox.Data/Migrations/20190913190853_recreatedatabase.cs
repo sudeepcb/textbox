@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TextBox.Data.Migrations
 {
-    public partial class correctremmendationname : Migration
+    public partial class recreatedatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -177,6 +177,13 @@ namespace TextBox.Data.Migrations
                 name: "IX_Authors_BookId",
                 table: "Authors",
                 column: "BookId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Authors_FirstName_LastName",
+                table: "Authors",
+                columns: new[] { "FirstName", "LastName" },
+                unique: true,
+                filter: "[FirstName] IS NOT NULL AND [LastName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_CartId",

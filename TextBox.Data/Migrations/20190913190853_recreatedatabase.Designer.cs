@@ -10,8 +10,8 @@ using TextBox.Data;
 namespace TextBox.Data.Migrations
 {
     [DbContext(typeof(TextBoxDBContext))]
-    [Migration("20190913145817_correctremmendationname")]
-    partial class correctremmendationname
+    [Migration("20190913190853_recreatedatabase")]
+    partial class recreatedatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,10 @@ namespace TextBox.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
+
+                    b.HasIndex("FirstName", "LastName")
+                        .IsUnique()
+                        .HasFilter("[FirstName] IS NOT NULL AND [LastName] IS NOT NULL");
 
                     b.ToTable("Authors");
                 });
