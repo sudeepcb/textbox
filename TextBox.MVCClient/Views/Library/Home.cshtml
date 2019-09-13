@@ -22,7 +22,14 @@
  @foreach (var item in Model.certainBooks)
   {
 <div class="col-sm">
-<p>@Model.Price</p>
+<p>item.Name</p>
+<div>
+  <p>by: @foreach(var item2 in item.allAuthors)
+  {
+    item2.Name
+  }
+  </p>
+</div>
 </div>
   }
 </div>
