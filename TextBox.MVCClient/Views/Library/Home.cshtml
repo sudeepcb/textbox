@@ -1,0 +1,36 @@
+@model TextBox.MVCClient.ViewModels.BookPageVM
+@{
+  Layout = "../Shared/_Layout.cshtml"; 
+}
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class = ".fixed-left">
+@Html.Partial("../Shared/_LibraryFilterPartial", @model)
+</div>
+<br>
+<div class="container">
+<form action="name of action" id ="filterbooks">
+<select name="filtertype" form="filterbooks">
+  <option value=1>A-Z</option>
+  <option value=2>Z-A</option>
+</select>
+<input type="hidden" name="certainbook" value=@Model.certainBooks>
+<input type="submit" value="Filter">
+</form>
+<div class="row">
+ @foreach (var item in Model.certainBooks)
+  {
+<div class="col-sm">
+<p>item.Name</p>
+<div>
+  <p>by: @foreach(var item2 in item.allAuthors)
+  {
+    item2.Name
+  }
+  </p>
+</div>
+</div>
+  }
+</div>
+</div>
