@@ -16,7 +16,7 @@ namespace TextBox.MVCClient.Models
     public List<Book> SortLib(int i, List<Book> library)
     {
       if(i==0)
-      {return SortAsc(library);}
+      {return library;}//.OrderBy(l => l.BookAuthors.OrderBy(b => b.LastName));}
       if(i==1)
       {return SortDes(library);}
       if(i==2)
@@ -24,47 +24,91 @@ namespace TextBox.MVCClient.Models
       else
       {return library;}
     }
+    //-----------------
+    // public List<Book> SortPrice(List<Book> library, string para)
+    // {
+    //   library.OrderBy(l => l.para);
+    //   return library;
+    // }
+    //------------------
+    //-------------------------------------------------------------SEARCH-----------------------------------------------------
+    public List<Book> Sort (List<Book> library, int i)//, string name)
+    {
+      return library;
+    }
     public List<Book> SortAsc(List<Book> library)
     {
-      library.OrderBy(i => i);
+      library.OrderBy(b => b.Title);
       return library;
     }
     public List<Book> SortDes(List<Book> library)
     {
-      library.OrderByDescending(i => i);
+      library.OrderByDescending(b => b.Title);
       return library;
     }
     public List<Book> SortPrice(List<Book> library)
     {
-      library.OrderBy(l => l.Cost);
+      library.OrderBy(b => b.Cost);
       return library;
     }
     public List<Book> SortPriceDes(List<Book> library)
     {
-      library.OrderByDescending(l => l.Cost);
+      library.OrderByDescending(b => b.Cost);
       return library;
     }
     public List<Book> SortNew(List<Book> library)
     {
-      library.OrderBy(l => l.ReleaseDate);
+      library.OrderBy(b => b.ReleaseDate);
       return library;
     }
     public List<Book> SortNewDes(List<Book> library)
     {
-      library.OrderByDescending(l => l.ReleaseDate);
+      library.OrderByDescending(b => b.ReleaseDate.Date);
       return library;
     }
-
-    public List<Book> SearchAuthor(int i, List<Book> library)
+//---------------------------------------------------------------------------------------------------------------------------
+    //public List<Book> 
+//-------------------------------------------------------------SEARCH-BAR----------------------------------------------------
+//STIRNGDOTSPLIT
+    public List<Book> Search (List<Book> library, int i)//, string name)
+    {
+        return library;
+    }
+    public List<Book> SearchAuthor(List<Book> library, string name)
     {
       List<Book> returnLib = new List<Book>{};
       foreach(var b in library)
       {
-        foreach(var a in b.BookAuthors.ToString())
-            if (a == 'c')
+        foreach(var a in b.BookAuthors)
+            if (a.FirstName == "name" || a.LastName == "name")
             {returnLib.Add(b);}
       }
       return returnLib;
     }
+
+    public List<Book> SearchGenre(List<Book> library, string name)
+    {
+      List<Book> returnLib = new List<Book>{};
+      foreach(var b in library)
+      {
+        foreach(var a in b.BookAuthors)
+            if (a.FirstName == "name" || a.LastName == "name")
+            {returnLib.Add(b);}
+      }
+      return returnLib;
+    }
+    public List<Book> SearchSeries(List<Book> library, string name)
+    {
+      List<Book> returnLib = new List<Book>{};
+      foreach(var b in library)
+      {
+        foreach(var a in b.BookAuthors)
+            if (a.FirstName == "name" || a.LastName == "name")
+            {returnLib.Add(b);}
+      }
+      return returnLib;
+    }
+
+
   }
 }

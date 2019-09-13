@@ -13,7 +13,8 @@ namespace TextBox.MVCClient.Controllers
     {
 
       LibraryModel l = new LibraryModel();
-        public IActionResult Home()
+        
+        public IActionResult displayLibrary()
         {
             return View();
         }
@@ -25,23 +26,18 @@ namespace TextBox.MVCClient.Controllers
         }
 
         [HttpPost]
-        public IActionResult SortCat(int i, List <Book> library)
+        public IActionResult SortCat(List <Book> library, int i, string param)
         {
-            return displayLibrary(l.SortLib(i,library));
+            return displayLibrary(l.Sort(library, i));
         }
         
         [HttpPost]
-        public IActionResult SearchPar(int i, List <Book> library)
+        public IActionResult SearchPar(List <Book> library, int i, string param)
         {
-            return displayLibrary(l.SearchAuthor(i,library));
+            return displayLibrary(l.Search(library, i));
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
