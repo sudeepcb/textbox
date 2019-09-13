@@ -15,5 +15,9 @@ namespace TextBox.Domain.Models
         public int ReviewId { get; set; }
         public Review Review { get; set; }
 
+        User()
+        {
+          List<Order> OrderHistory = new List<Order>();
+        }
     }
 }
