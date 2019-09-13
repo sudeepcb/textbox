@@ -10,6 +10,14 @@
 </div>
 <br>
 <div class="container">
+<form action="name of action" id ="filterbooks">
+<select name="filtertype" form="filterbooks">
+  <option value=1>A-Z</option>
+  <option value=2>Z-A</option>
+</select>
+<input type="hidden" name="certainbook" value=@Model.certainBooks>
+<input type="submit" value="Filter">
+</form>
 <div class="row">
  @foreach (var item in Model.certainBooks)
   {
