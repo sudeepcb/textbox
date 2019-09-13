@@ -6,5 +6,10 @@ namespace TextBox.Domain.Models
     {
         public int Id { get; set; }
         public List<Book> RecommendedBooks { get; set; }
+
+        Recomendation()
+        {
+          List<Book> RecommendedBooks = new List<Book>();
+        }
     }
 }
