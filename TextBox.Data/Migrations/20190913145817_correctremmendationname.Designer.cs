@@ -10,8 +10,8 @@ using TextBox.Data;
 namespace TextBox.Data.Migrations
 {
     [DbContext(typeof(TextBoxDBContext))]
-    [Migration("20190911015624_addedtherestoftherelationshipstodatabase")]
-    partial class addedtherestoftherelationshipstodatabase
+    [Migration("20190913145817_correctremmendationname")]
+    partial class correctremmendationname
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,7 +64,7 @@ namespace TextBox.Data.Migrations
 
                     b.Property<string>("Publisher");
 
-                    b.Property<int?>("RecomendationId");
+                    b.Property<int?>("RecommendationId");
 
                     b.Property<DateTime>("ReleaseDate");
 
@@ -80,7 +80,7 @@ namespace TextBox.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("RecomendationId");
+                    b.HasIndex("RecommendationId");
 
                     b.ToTable("Books");
                 });
@@ -143,7 +143,7 @@ namespace TextBox.Data.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("TextBox.Domain.Models.Recomendation", b =>
+            modelBuilder.Entity("TextBox.Domain.Models.Recommendation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -151,7 +151,7 @@ namespace TextBox.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Recomendations");
+                    b.ToTable("Recommendations");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.Review", b =>
@@ -220,9 +220,9 @@ namespace TextBox.Data.Migrations
                         .WithMany("BooksOnOrder")
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("TextBox.Domain.Models.Recomendation")
+                    b.HasOne("TextBox.Domain.Models.Recommendation")
                         .WithMany("RecommendedBooks")
-                        .HasForeignKey("RecomendationId");
+                        .HasForeignKey("RecommendationId");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.Cart", b =>

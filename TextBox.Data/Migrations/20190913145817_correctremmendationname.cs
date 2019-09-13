@@ -4,22 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TextBox.Data.Migrations
 {
-    public partial class addedtherestoftherelationshipstodatabase : Migration
+    public partial class correctremmendationname : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "BookId",
-                table: "Genres",
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "BookId",
-                table: "Authors",
-                nullable: true);
-
             migrationBuilder.CreateTable(
-                name: "Recomendations",
+                name: "Recommendations",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -27,7 +17,36 @@ namespace TextBox.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recomendations", x => x.Id);
+                    table.PrimaryKey("PK_Recommendations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Authors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    BookId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Authors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Genres",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BookGenre = table.Column<string>(nullable: true),
+                    BookId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genres", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,7 +148,7 @@ namespace TextBox.Data.Migrations
                     AverageRating = table.Column<double>(nullable: false),
                     CartId = table.Column<int>(nullable: true),
                     OrderId = table.Column<int>(nullable: true),
-                    RecomendationId = table.Column<int>(nullable: true)
+                    RecommendationId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,17 +166,12 @@ namespace TextBox.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Books_Recomendations_RecomendationId",
-                        column: x => x.RecomendationId,
-                        principalTable: "Recomendations",
+                        name: "FK_Books_Recommendations_RecommendationId",
+                        column: x => x.RecommendationId,
+                        principalTable: "Recommendations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Genres_BookId",
-                table: "Genres",
-                column: "BookId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Authors_BookId",
@@ -175,15 +189,27 @@ namespace TextBox.Data.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_RecomendationId",
+                name: "IX_Books_RecommendationId",
                 table: "Books",
-                column: "RecomendationId");
+                column: "RecommendationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_UserId",
                 table: "Carts",
                 column: "UserId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Genres_BookGenre",
+                table: "Genres",
+                column: "BookGenre",
+                unique: true,
+                filter: "[BookGenre] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Genres_BookId",
+                table: "Genres",
+                column: "BookId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
@@ -236,20 +262,17 @@ namespace TextBox.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Authors_Books_BookId",
-                table: "Authors");
+                name: "FK_Reviews_Books_BookId",
+                table: "Reviews");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Genres_Books_BookId",
-                table: "Genres");
+            migrationBuilder.DropTable(
+                name: "Authors");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Books_Carts_CartId",
-                table: "Books");
+            migrationBuilder.DropTable(
+                name: "Genres");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Books_Orders_OrderId",
-                table: "Books");
+            migrationBuilder.DropTable(
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Carts");
@@ -258,32 +281,13 @@ namespace TextBox.Data.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
+                name: "Recommendations");
+
+            migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Reviews");
-
-            migrationBuilder.DropTable(
-                name: "Books");
-
-            migrationBuilder.DropTable(
-                name: "Recomendations");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Genres_BookId",
-                table: "Genres");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Authors_BookId",
-                table: "Authors");
-
-            migrationBuilder.DropColumn(
-                name: "BookId",
-                table: "Genres");
-
-            migrationBuilder.DropColumn(
-                name: "BookId",
-                table: "Authors");
         }
     }
 }

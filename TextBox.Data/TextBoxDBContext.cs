@@ -9,7 +9,7 @@ namespace TextBox.Data
       public DbSet<Author> Authors { get; set; }
       public DbSet<Genre> Genres { get; set; }
       public DbSet<Review> Reviews { get; set; }
-      public DbSet<Recomendation> Recomendations { get; set; }
+      public DbSet<Recommendation> Recommendations { get; set; }
       public DbSet<User> Users { get; set; }
       public DbSet<Order> Orders { get; set; }
       public DbSet<Cart> Carts { get; set; }
@@ -36,8 +36,8 @@ namespace TextBox.Data
         builder.Entity<Cart>().HasKey(c=>c.Id);
         builder.Entity<Cart>().HasMany(b=>b.BooksInCart).WithOne();
 
-        builder.Entity<Recomendation>().HasKey(r=>r.Id);
-        builder.Entity<Recomendation>().HasMany(rb=>rb.RecommendedBooks).WithOne();
+        builder.Entity<Recommendation>().HasKey(r=>r.Id);
+        builder.Entity<Recommendation>().HasMany(rb=>rb.RecommendedBooks).WithOne();
 
         builder.Entity<Review>().HasKey(r=>r.Id);
         builder.Entity<Review>().HasOne(u=>u.ReviewWriter).WithOne(u=>u.Review).HasForeignKey<User>(r=>r.ReviewId);
