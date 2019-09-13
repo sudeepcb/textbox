@@ -43,6 +43,7 @@ namespace TextBox.Data
         builder.Entity<Review>().HasOne(u=>u.ReviewWriter).WithOne(u=>u.Review).HasForeignKey<User>(r=>r.ReviewId);
 
         builder.Entity<Author>().HasKey(a=>a.Id);
+        builder.Entity<Author>().HasIndex(a => new { a.FirstName, a.LastName}).IsUnique();
 
         builder.Entity<Genre>().HasKey(g=>g.Id);
         builder.Entity<Genre>().HasIndex(g=>g.BookGenre).IsUnique();
