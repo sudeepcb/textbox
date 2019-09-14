@@ -14,13 +14,13 @@ namespace TextBox.MVCClient.Controllers
 
       LibraryModel l = new LibraryModel();
         
-        public IActionResult displayLibrary()
+        public IActionResult Home()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult displayLibrary(List<Book> library)
+        public IActionResult Home(List<Book> library)
         {
             return View(library);
         }
@@ -28,13 +28,13 @@ namespace TextBox.MVCClient.Controllers
         [HttpPost]
         public IActionResult SortCat(List <Book> library, int i, string param)
         {
-            return displayLibrary(l.Sort(library, i));
+            return Home(l.Sort(library, i));
         }
         
         [HttpPost]
         public IActionResult SearchPar(List <Book> library, int i, string param)
         {
-            return displayLibrary(l.Search(library, i));
+            return Home(l.Search(library, i));
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
