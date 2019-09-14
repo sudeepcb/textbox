@@ -35,7 +35,7 @@ namespace TextBox.MVCClient.Controllers
         }
         
         [HttpPost]
-        public IActionResult SearchPar(List <Book> library, int i, string param)
+        public IActionResult SortPar(List <Book> library, int i, string param)
         {
             return Home(l.Search(library, i));
         }
