@@ -23,7 +23,7 @@ namespace TextBox.MVCClient.Models
       library = _db.Books.ToList();
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
-      allSeries = _db.BookSeries.ToList
+      //allSeries = _db.BookSeries.ToList
     }
     // public List<Book> OrderLibDynamic(List<Book> library, string description)
     // {
