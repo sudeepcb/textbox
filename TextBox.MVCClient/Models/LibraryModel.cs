@@ -23,7 +23,7 @@ namespace TextBox.MVCClient.Models
       library = _db.Books.ToList();
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
-      allSeries = _db.
+      allSeries = _db.Seriess.ToList();
     }
     // public List<Book> OrderLibDynamic(List<Book> library, string description)
     // {
@@ -32,16 +32,16 @@ namespace TextBox.MVCClient.Models
     //     .OrderBy(description);
     //   return library;
     // }
-    public List<Book> SortLib(int i, List<Book> library)
+    public void SortLib(List<Book> library,int i)
     {
-      if(i==0)
-      {return library;}//.OrderBy(l => l.BookAuthors.OrderBy(b => b.LastName));}
       if(i==1)
-      {return SortDes(library);}
+      {library.OrderBy(b => b.Title);}//.OrderBy(l => l.BookAuthors.OrderBy(b => b.LastName));}
       if(i==2)
-      {return SortPrice(library);}
-      else
-      {return library;}
+      {library.OrderByDescending(b => b.Title);}
+      if(i==3)
+      {library.OrderBy(b => b.Cost);}
+      if(i==4)
+      {library.OrderByDescending(b => b.Cost);}
     }
     //-----------------
     // public List<Book> SortPrice(List<Book> library, string para)

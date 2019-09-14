@@ -10,10 +10,12 @@
 </div>
 <br>
 <div class="container">
-<form action="name of action" id ="filterbooks">
+<form action="/Library/Home" method="post" id ="filterbooks">
 <select name="filtertype" form="filterbooks">
   <option value=1>A-Z</option>
   <option value=2>Z-A</option>
+  <option value=3>Price:Low-High</option>
+  <option value=4>Price:High-Low</option>
 </select>
 <input type="hidden" name="certainbook" value=library>
 <input type="submit" value="Filter">
