@@ -26,18 +26,8 @@ namespace TextBox.MVCClient.Controllers
         [HttpPost]
         public IActionResult Create(Book b,Author a,Genre g)
         {
-          Author author = new Author();
-          b.BookAuthors  = new List<Author>();
-          b.BookGenres = new List<Genre>();
-
-          author.FirstName = "John";
-          author.LastName = "Smith";
-          b.BookAuthors.Add(a);
-          b.BookAuthors.Add(author);
-          b.BookGenres.Add(g);
-
-          _db.Books.Add(b);
-          _db.SaveChanges();
+          BookInsertion bi = new BookInsertion();
+          bi.AddBookToDB(b,a,g);
 
           return View();
         }
