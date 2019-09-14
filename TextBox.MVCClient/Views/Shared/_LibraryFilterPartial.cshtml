@@ -46,15 +46,15 @@
     Series 
   </button>
   <div class="dropdown-menu">
-    @foreach (var item in Model.library)
+    @foreach (var item in Model.allSeries)
     {
      @Html.ActionLink(
-       linkText : item.Series,
+       linkText : item.BookSeries,
        actionName: "GetAllBooks",
        controllerName: "Library",
        routeValues: new{
          index = 3,
-         filterName = item.Series
+         filterName = item.BookSeries
        },
        htmlAttributes: null
       )   

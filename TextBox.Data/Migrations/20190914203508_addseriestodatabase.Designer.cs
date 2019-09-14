@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TextBox.Data;
 
 namespace TextBox.Data.Migrations
 {
     [DbContext(typeof(TextBoxDBContext))]
-    partial class TextBoxDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190914203508_addseriestodatabase")]
+    partial class addseriestodatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,6 +56,8 @@ namespace TextBox.Data.Migrations
 
                     b.Property<string>("BookCover");
 
+                    b.Property<int?>("BookSeriesId");
+
                     b.Property<int?>("CartId");
 
                     b.Property<decimal>("Cost");
@@ -75,6 +79,8 @@ namespace TextBox.Data.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookSeriesId");
 
                     b.HasIndex("CartId");
 
@@ -181,14 +187,9 @@ namespace TextBox.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookId");
-
                     b.Property<string>("BookSeries");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookId")
-                        .IsUnique();
 
                     b.HasIndex("BookSeries")
                         .IsUnique()
@@ -234,6 +235,10 @@ namespace TextBox.Data.Migrations
 
             modelBuilder.Entity("TextBox.Domain.Models.Book", b =>
                 {
+                    b.HasOne("TextBox.Domain.Models.Series", "BookSeries")
+                        .WithMany()
+                        .HasForeignKey("BookSeriesId");
+
                     b.HasOne("TextBox.Domain.Models.Cart")
                         .WithMany("BooksInCart")
                         .HasForeignKey("CartId");
@@ -274,14 +279,6 @@ namespace TextBox.Data.Migrations
                     b.HasOne("TextBox.Domain.Models.Book")
                         .WithMany("userReviews")
                         .HasForeignKey("BookId");
-                });
-
-            modelBuilder.Entity("TextBox.Domain.Models.Series", b =>
-                {
-                    b.HasOne("TextBox.Domain.Models.Book", "Book")
-                        .WithOne("BookSeries")
-                        .HasForeignKey("TextBox.Domain.Models.Series", "BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.User", b =>

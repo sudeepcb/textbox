@@ -21,6 +21,7 @@ namespace TextBox.Data
       protected override void OnModelCreating(ModelBuilder builder)
       {
         builder.Entity<Book>().HasKey(b=>b.Id);
+        builder.Entity<Book>().HasOne(s=>s.BookSeries).WithOne(b=>b.Book).HasForeignKey<Series>(b=>b.BookId);
         builder.Entity<Book>().HasMany(a=>a.BookAuthors).WithOne();
         builder.Entity<Book>().HasMany(g=>g.BookGenres).WithOne();
         builder.Entity<Book>().HasMany(r=>r.userReviews).WithOne();
@@ -47,6 +48,9 @@ namespace TextBox.Data
 
         builder.Entity<Genre>().HasKey(g=>g.Id);
         builder.Entity<Genre>().HasIndex(g=>g.BookGenre).IsUnique();
+
+        builder.Entity<Series>().HasKey(s=>s.Id);
+        builder.Entity<Series>().HasIndex(s=>s.BookSeries).IsUnique();
 
       }
     }
