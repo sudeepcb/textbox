@@ -10,16 +10,29 @@ namespace TextBox.MVCClient.Models
       private TextBoxDBContext _db = new TextBoxDBContext();
       public void AddBookToDB( Book b,Author a,Genre g)
       {
+          b.BookAuthors  = new List<Author>();
+          b.BookGenres = new List<Genre>();
+
           if(!AuthorInDB(a) && !GenreInDB(g))
           {
-            b.BookAuthors  = new List<Author>();
-            b.BookGenres = new List<Genre>();
 
             b.BookAuthors.Add(a);
             b.BookGenres.Add(g);
 
             _db.Books.Add(b);
             _db.SaveChanges();
+          }
+          if(AuthorInDB(a) && !GenreInDB(g))
+          {
+            b.BookAuthors.Find(author=>author.Id == a.Id);
+            b.BookGenres.Add(g);
+
+            _db.Books.Add(b);
+            _db.SaveChanges();
+          }
+          else
+          {
+
           }          
       }
 
