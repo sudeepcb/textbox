@@ -23,7 +23,6 @@ namespace TextBox.Data
       protected override void OnModelCreating(ModelBuilder builder)
       {
         builder.Entity<Book>().HasKey(b=>b.Id);
-        builder.Entity<Book>().HasOne(s=>s.BookSeries).WithOne(b=>b.Book).HasForeignKey<Series>(b=>b.BookId);
         builder.Entity<Book>().HasMany(a=>a.BookAuthors).WithOne();
         builder.Entity<Book>().HasMany(g=>g.BookGenres).WithOne();
         builder.Entity<Book>().HasMany(r=>r.userReviews).WithOne();
