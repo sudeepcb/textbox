@@ -1,4 +1,4 @@
-@model TextBox.MVCClient.ViewModels.BookPageVM
+@model TextBox.MVCClient.Models.LibraryModel
 
 <!-- Default dropright button -->
 <div class="btn-group dropright">
@@ -46,7 +46,7 @@
     Series 
   </button>
   <div class="dropdown-menu">
-    @foreach (var item in Model.allBooks)
+    @foreach (var item in Model.library)
     {
      @Html.ActionLink(
        linkText : item.Series,

@@ -1,11 +1,28 @@
 using System.Collections.Generic;
 using System.Linq;
+using TextBox.Data;
 using TextBox.Domain.Models;
 
 namespace TextBox.MVCClient.Models
 {
   public class LibraryModel
   {
+    public TextBoxDBContext _db = new TextBoxDBContext();
+    public List<Book> library {get; set;}
+    public List<Genre> allGenres {get; set;} 
+    public List<Author> allAuthors { get; set; }
+    
+    public List<Book> dbList()
+    {
+      return (_db.Books.ToList());
+    }
+
+    public void setLists()
+    {
+      library = _db.Books.ToList();
+      allGenres = _db.Genres.ToList();
+      allAuthors = _db.Authors.ToList();
+    }
     // public List<Book> OrderLibDynamic(List<Book> library, string description)
     // {
     //   var query = DbContext.Book
