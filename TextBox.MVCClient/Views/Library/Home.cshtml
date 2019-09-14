@@ -1,4 +1,4 @@
-@model TextBox.MVCClient.ViewModels.BookPageVM
+@model TextBox.MVCClient.Models.LibraryModel
 @{
   Layout = "../Shared/_Layout.cshtml"; 
 }
@@ -15,19 +15,26 @@
   <option value=1>A-Z</option>
   <option value=2>Z-A</option>
 </select>
-<input type="hidden" name="certainbook" value=@Model.certainBooks>
+<input type="hidden" name="certainbook" value=library>
 <input type="submit" value="Filter">
 </form>
 <div class="row">
- @foreach (var item in Model.certainBooks)
+ @foreach (var item in Model.library)
   {
 <div class="col-sm">
-<p>item.Title</p>
+<p> @item.Title 
+
+</p>
 <div>
-  by: @foreach (var item2 in item.BookAuthors)
+  by:
+  <p>
+  @foreach (var item2 in item.BookAuthors)
   {
-    <p>item2.FirstName item2.LastName</p>
+      <i>@item2.FirstName @item2.LastName </i>
+      <br>
   }
+
+  </p>
 </div>
 </div>
   }

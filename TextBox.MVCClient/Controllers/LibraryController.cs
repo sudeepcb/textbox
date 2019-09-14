@@ -13,16 +13,19 @@ namespace TextBox.MVCClient.Controllers
     {
 
       LibraryModel l = new LibraryModel();
+
         
         public IActionResult Home()
         {
-            return View();
+          l.setLists();
+          return View(l);
+            //return View(l.dbList());
         }
 
         [HttpPost]
         public IActionResult Home(List<Book> library)
         {
-            return View(library);
+            return View(l);
         }
 
         [HttpPost]
