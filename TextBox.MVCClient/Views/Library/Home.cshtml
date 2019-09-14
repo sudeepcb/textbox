@@ -6,7 +6,7 @@
     ViewData["Title"] = "Home Page";
 }
 <div class = ".fixed-left">
-@Html.Partial("../Shared/_LibraryFilterPartial", @model)
+@{Html.Partial("../Shared/_LibraryFilterPartial", @Model);}
 </div>
 <br>
 <div class="container">
@@ -24,11 +24,10 @@
 <div class="col-sm">
 <p>item.Title</p>
 <div>
-  <p>by: @foreach(var item2 in item.BookAuthors)
+  by: @foreach (var item2 in item.BookAuthors)
   {
-    item2.FirstName item2.SecondName
+    <p>item2.FirstName item2.LastName</p>
   }
-  </p>
 </div>
 </div>
   }

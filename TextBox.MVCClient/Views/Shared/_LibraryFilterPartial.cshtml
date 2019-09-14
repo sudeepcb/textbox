@@ -9,12 +9,12 @@
     @foreach (var item in Model.allGenres)
     {
      @Html.ActionLink(
-       linkText : item.Name,
-       actionName: "GetAllBooks"
-       controllerName: "Library"
+       linkText : item.BookGenre,
+       actionName: "GetAllBooks",
+       controllerName: "Library",
        routeValues: new{
          index = 1,
-         filterName = item.Name
+         filterName = item.BookGenre
        },
        htmlAttributes: null
       )   
@@ -29,12 +29,12 @@
     @foreach (var item in Model.allAuthors)
     {
      @Html.ActionLink(
-       linkText : item.Name,
-       actionName: "GetAllBooks"
-       controllerName: "Library"
+       linkText : item.FirstName,
+       actionName: "GetAllBooks",
+       controllerName: "Library",
        routeValues: new{
          index = 2,
-         filterName = item.Name
+         filterName = item.FirstName
        },
        htmlAttributes: null
       )   
@@ -46,15 +46,15 @@
     Series 
   </button>
   <div class="dropdown-menu">
-    @foreach (var item in Model.allSeries)
+    @foreach (var item in Model.allBooks)
     {
      @Html.ActionLink(
-       linkText : item.Name,
-       actionName: "GetAllBooks"
-       controllerName: "Library"
+       linkText : item.Series,
+       actionName: "GetAllBooks",
+       controllerName: "Library",
        routeValues: new{
          index = 3,
-         filterName = item.Name
+         filterName = item.Series
        },
        htmlAttributes: null
       )   

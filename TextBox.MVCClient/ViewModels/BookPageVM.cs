@@ -1,4 +1,4 @@
-
+using System.Collections.Generic;
 using TextBox.Domain.Models;
 
 namespace TextBox.MVCClient.ViewModels
