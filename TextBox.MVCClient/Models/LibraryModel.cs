@@ -9,7 +9,8 @@ namespace TextBox.MVCClient.Models
   {
     public TextBoxDBContext _db = new TextBoxDBContext();
     public List<Book> library {get; set;}
-    public List<Genre> allGenres {get; set;} 
+    public List<Genre> allGenres {get; set; }
+    public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
     
     public List<Book> dbList()
