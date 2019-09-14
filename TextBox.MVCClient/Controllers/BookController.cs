@@ -13,7 +13,6 @@ namespace TextBox.MVCClient.Controllers
     
     public class BookController : Controller
     {
-        private TextBoxDBContext _db = new TextBoxDBContext();
         public IActionResult Detail()
         {
             return View();

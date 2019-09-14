@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TextBox.Data;
 using TextBox.Domain.Models;
 
@@ -9,7 +10,7 @@ namespace TextBox.MVCClient.Models
       private TextBoxDBContext _db = new TextBoxDBContext();
       public void AddBookToDB( Book b,Author a,Genre g)
       {
-          if(!AuthorInDB() && !GenreInDB())
+          if(!AuthorInDB(a) && !GenreInDB(g))
           {
             b.BookAuthors  = new List<Author>();
             b.BookGenres = new List<Genre>();
@@ -22,12 +23,22 @@ namespace TextBox.MVCClient.Models
           }          
       }
 
-      public bool AuthorInDB()
+      public bool AuthorInDB(Author author)
       {
-        return true;
+        if((_db.Authors.Any(a=>a.FirstName == author.FirstName)) && (_db.Authors.Any(a=>a.LastName == author.LastName)))
+        {
+          return true;
+        }
+
+        return false;
       }
-      public bool GenreInDB()
+      public bool GenreInDB(Genre genre)
       {
+        if(_db.Genres.Any(g=>g.BookGenre == genre.BookGenre))
+        {
+          return true;
+        }
+
         return false;
       }
     }
