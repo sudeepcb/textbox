@@ -49,12 +49,12 @@
     @foreach (var item in Model.allSeries)
     {
      @Html.ActionLink(
-       linkText : item.BookSeries,
+       linkText : item.SeriesName,
        actionName: "GetAllBooks",
        controllerName: "Library",
        routeValues: new{
          index = 3,
-         filterName = item.BookSeries
+         filterName = item.SeriesName
        },
        htmlAttributes: null
       )   

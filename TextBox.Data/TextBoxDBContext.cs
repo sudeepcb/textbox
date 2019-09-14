@@ -51,7 +51,7 @@ namespace TextBox.Data
         builder.Entity<Genre>().HasIndex(g=>g.BookGenre).IsUnique();
 
         builder.Entity<Series>().HasKey(s=>s.Id);
-        builder.Entity<Series>().HasIndex(s=>s.BookSeries).IsUnique();
+        builder.Entity<Series>().HasIndex(s=>s.BooksInSeries).IsUnique();
 
       }
     }

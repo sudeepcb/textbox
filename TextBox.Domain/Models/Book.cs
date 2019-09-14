@@ -12,7 +12,6 @@ namespace TextBox.Domain.Models
       public string Synopsis { get; set; }
       public List<Author> BookAuthors { get; set; }
       public List<Genre> BookGenres { get; set; }
-      public Series  BookSeries { get; set; }
       public decimal Cost { get; set; }
       public string ISBN { get; set; }
       public int Pages { get; set; }
