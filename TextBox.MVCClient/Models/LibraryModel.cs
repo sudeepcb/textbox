@@ -12,6 +12,7 @@ namespace TextBox.MVCClient.Models
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
+    public List<BookAuthors> allBookAuthors {get; set;}
     
     public List<Book> dbList()
     {
@@ -24,22 +25,14 @@ namespace TextBox.MVCClient.Models
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
+      allBookAuthors = _db.BooksAuthors.ToList();
     }
-    // public List<Book> OrderLibDynamic(List<Book> library, string description)
-    // {
-    //   var query = DbContext.Book
-    //     .Select()
-    //     .OrderBy(description);
-    //   return library;
-    // }
     public void SortLib(List<Book> library,int i)
     {
-      System.Console.WriteLine("\n\n\n\n\n"+i+"\n\n\n\n\n");
       if(i==1)
-      //{library=library.OrderBy(b => b.Title).ToList();}
-      {}
+      {library = library.OrderBy(l=>l.Title).ToList();}
       if(i==2)
-      //{library=library.OrderByDescending(b => b.Title).ToList();}
+      {library=library.OrderByDescending(b => b.Title).ToList();}
       {}
       if(i==3)
       {library=library.OrderBy(b => b.Cost).ToList();}
