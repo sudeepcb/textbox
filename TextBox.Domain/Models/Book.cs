@@ -11,7 +11,7 @@ namespace TextBox.Domain.Models
       public string BookCover { get; set; }
       public string Synopsis { get; set; }
       public List<Author> BookAuthors { get; set; }
-      public List<Genre> BookGenres { get; set; }
+      public List<Genre> BookGenress { get; set; }
       public decimal Cost { get; set; }
       public string ISBN { get; set; }
       public int Pages { get; set; }

@@ -5,16 +5,17 @@ namespace TextBox.Data
 {
     public class TextBoxDBContext : DbContext
     {
-      public DbSet<Book> Books { get; set; }
       public DbSet<Author> Authors { get; set; }
-      public DbSet<Genre> Genres { get; set; }
-      public DbSet<Review> Reviews { get; set; }
-      public DbSet<Recommendation> Recommendations { get; set; }
-      public DbSet<User> Users { get; set; }
-      public DbSet<Order> Orders { get; set; }
+      public DbSet<Book> Books { get; set; }
+      public DbSet<BookAuthor> BookAuthors { get; set; }
       public DbSet<Cart> Carts { get; set; }
+      public DbSet<Genre> Genres { get; set; }
+      public DbSet<Order> Orders { get; set; }
+      public DbSet<Recommendation> Recommendations { get; set; }
+      public DbSet<Review> Reviews { get; set; }
       public DbSet<Series> Seriess { get; set; }
-
+      public DbSet<User> Users { get; set; }
+      
       protected override void OnConfiguring(DbContextOptionsBuilder builder)
       {
         builder.UseSqlServer("Server=tcp:keilpizza.database.windows.net,1433;Initial Catalog=TextBoxDB;Persist Security Info=False;User ID=sqladmin;Password=Password12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -22,6 +23,8 @@ namespace TextBox.Data
       
       protected override void OnModelCreating(ModelBuilder builder)
       {
+        builder.Entity<Author>().HasKey(a=>a.Id);
+
         builder.Entity<Book>().HasKey(b=>b.Id);
         builder.Entity<Book>().HasMany(a=>a.BookAuthors).WithOne();
         builder.Entity<Book>().HasMany(g=>g.BookGenres).WithOne();
@@ -43,9 +46,6 @@ namespace TextBox.Data
 
         builder.Entity<Review>().HasKey(r=>r.Id);
         builder.Entity<Review>().HasOne(u=>u.ReviewWriter).WithOne(u=>u.Review).HasForeignKey<User>(r=>r.ReviewId);
-
-        builder.Entity<Author>().HasKey(a=>a.Id);
-        builder.Entity<Author>().HasIndex(a => new { a.FirstName, a.LastName}).IsUnique();
 
         builder.Entity<Genre>().HasKey(g=>g.Id);
         builder.Entity<Genre>().HasIndex(g=>g.BookGenre).IsUnique();
