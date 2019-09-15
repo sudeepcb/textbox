@@ -56,21 +56,12 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - task: Docker@2
-            inputs:
-              command: 'login'
-              containerRegistry: 'docker'
-            displayName: 'docker login'
           - script: |
               docker login --username=keiloconnor91 --password=Password12345
               docker image build --file Dockerfile --tag textboxp2 .
               docker image tag textboxp2 keiloconnor91/textboxp2
-              docker push keiloconnor91/devopsdemo
-          - task: Docker@2
-            inputs:
-              command: 'logout'
-              containerRegistry: 'docker'
-            displayName: 'docker login'
+              docker push keiloconnor91/devopsdem
+              docker logout
 
   
   - stage: 'deploy'
