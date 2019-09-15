@@ -35,13 +35,13 @@ namespace TextBox.MVCClient.Models
     public void SortLib(List<Book> library,int i)
     {
       if(i==1)
-      {library.OrderBy(b => b.Title);}//.OrderBy(l => l.BookAuthors.OrderBy(b => b.LastName));}
+      {library=library.OrderBy(b => b.Title).ToList();}
       if(i==2)
-      {library.OrderByDescending(b => b.Title);}
+      {library=library.OrderByDescending(b => b.Title).ToList();}
       if(i==3)
-      {library.OrderBy(b => b.Cost);}
+      {library=library.OrderBy(b => b.Cost).ToList();}
       if(i==4)
-      {library.OrderByDescending(b => b.Cost);}
+      {library=library.OrderByDescending(b => b.Cost).ToList();}
     }
     //-----------------
     // public List<Book> SortPrice(List<Book> library, string para)
