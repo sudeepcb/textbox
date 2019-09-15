@@ -5,6 +5,9 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <link rel ="stylesheet" type="text/css" href="C:\Users\sudee\textbox\TextBox.MVCClient\Styles\Library.css">
+</head>
 <div class = ".fixed-left">
 @Html.Partial("../Shared/_LibraryFilterPartial", @Model)
 </div>
@@ -24,21 +27,18 @@
  @foreach (var item in Model.library)
   {
 <div class="col-sm-2">
-<p> @item.Title 
-  
-</p>
+  <div class ="cliente">
+<p> @item.Title </p>
   by:
-  <p>
-  foreach (var item2 in item.BookAuthors)
+  @foreach (var booktoauthors in Model.allBookAuthors)
   {
-      <i></i>
-      <br>
+    @if(booktoauthors.BookId == item.Id)
+    {
+      <p>@booktoauthors.Authors.FirstName @booktoauthors.Authors.LastName</p>
     }
   }
-
-  </p>
+  </div>
 </div>
-  }
   }
 </div>
 </div>
