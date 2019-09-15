@@ -34,10 +34,13 @@ namespace TextBox.MVCClient.Models
     // }
     public void SortLib(List<Book> library,int i)
     {
+      System.Console.WriteLine("\n\n\n\n\n"+i+"\n\n\n\n\n");
       if(i==1)
-      {library=library.OrderBy(b => b.Title).ToList();}
+      //{library=library.OrderBy(b => b.Title).ToList();}
+      {}
       if(i==2)
-      {library=library.OrderByDescending(b => b.Title).ToList();}
+      //{library=library.OrderByDescending(b => b.Title).ToList();}
+      {}
       if(i==3)
       {library=library.OrderBy(b => b.Cost).ToList();}
       if(i==4)
