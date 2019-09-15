@@ -8,6 +8,7 @@ namespace TextBox.Tests
       public void Test1()
       {
         
+        Assert.True(true);    
       }
     }
 }
