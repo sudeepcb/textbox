@@ -6,7 +6,7 @@
     ViewData["Title"] = "Home Page";
 }
 <div class = ".fixed-left">
-@{Html.Partial("../Shared/_LibraryFilterPartial", @Model);}
+@Html.Partial("../Shared/_LibraryFilterPartial", @Model)
 </div>
 <br>
 <div class="container">
@@ -23,24 +23,20 @@
 <div class="row">
  @foreach (var item in Model.library)
   {
-<div class="col-sm">
+<div class="col-sm-2">
 <p> @item.Title 
   
 </p>
-<div>
   by:
   <p>
-  @foreach (var item2 in Model.allAuthors)
+  foreach (var item2 in item.BookAuthors)
   {
-    <!-- if(item2. == item.Id)
-    {
       <i> @item2.FirstName @item2.LastName </i>
       <br>
-    } -->
+    }
   }
 
   </p>
-</div>
 </div>
   }
   }

@@ -99,7 +99,7 @@ namespace TextBox.MVCClient.Models
       foreach(var b in library)
       {
         foreach(var a in b.BookAuthors)
-            if (a.FirstName == "name" || a.LastName == "name")
+            if (a.Authors.FirstName == "name" || a.Authors.LastName == "name")
             {returnLib.Add(b);}
       }
       return returnLib;
@@ -111,7 +111,7 @@ namespace TextBox.MVCClient.Models
       foreach(var b in library)
       {
         foreach(var a in b.BookAuthors)
-            if (a.FirstName == "name" || a.LastName == "name")
+            if (a.Authors.FirstName == "name" || a.Authors.LastName == "name")
             {returnLib.Add(b);}
       }
       return returnLib;
@@ -122,7 +122,7 @@ namespace TextBox.MVCClient.Models
       foreach(var b in library)
       {
         foreach(var a in b.BookAuthors)
-            if (a.FirstName == "name" || a.LastName == "name")
+            if (a.Authors.FirstName == "name" || a.Authors.LastName == "name")
             {returnLib.Add(b);}
       }
       return returnLib;

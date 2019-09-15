@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TextBox.Domain.Models
 {
     public class Review
@@ -7,5 +9,6 @@ namespace TextBox.Domain.Models
         public User ReviewWriter { get; set; }
         public string ReviewTitle { get; set; }        
         public string Content { get; set; }
+        public virtual ICollection<BookReviews> userReviews { get; set; }
     }
 }

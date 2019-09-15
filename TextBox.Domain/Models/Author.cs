@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TextBox.Domain.Models
 {
     public class Author
@@ -5,5 +7,6 @@ namespace TextBox.Domain.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public virtual ICollection<BookAuthors> BookAuthors { get; set; }
     }
 }
