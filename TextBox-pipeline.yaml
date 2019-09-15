@@ -42,8 +42,7 @@ stages:
             displayName: 'publish result::code-coverage'
             inputs:
               codeCoverageTool: cobertura
-              summaryFileLocation: '**/coverage.cobertura.xml'
-              
+              summaryFileLocation: '**/coverage.cobertura.xml'              
   
   - stage: 'pack'
     condition: succeeded()
@@ -57,8 +56,21 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - script:
-              echo 'entered pack stage'
+          - task: Docker@2
+            inputs:
+              command: 'login'
+              containerRegistry: 'docker'
+            displayName: 'docker login'
+          - script: |
+              docker login --username=keiloconnor91 --password=Password12345
+              docker image build --file Dockerfile --tag textboxp2 .
+              docker image tag textboxp2 keiloconnor91/textboxp2
+              docker push keiloconnor91/devopsdemo
+          - task: Docker@2
+            inputs:
+              command: 'logout'
+              containerRegistry: 'docker'
+            displayName: 'docker login'
 
   
   - stage: 'deploy'
