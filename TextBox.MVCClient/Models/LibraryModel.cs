@@ -12,6 +12,7 @@ namespace TextBox.MVCClient.Models
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
+    public List<BookAuthors> allBookAuthors {get; set;}
     
     public List<Book> dbList()
     {
@@ -24,6 +25,7 @@ namespace TextBox.MVCClient.Models
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
+      allBookAuthors = _db.BooksAuthors.ToList();
     }
     // public List<Book> OrderLibDynamic(List<Book> library, string description)
     // {

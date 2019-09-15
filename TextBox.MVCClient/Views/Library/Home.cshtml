@@ -26,8 +26,7 @@
 <div class="col-sm-2">
 <p> @item.Title </p>
   by:
-  <p>
-  @foreach (var booktoauthors in item.BookAuthors)
+  @foreach (var booktoauthors in Model.allBookAuthors)
   {
     @if(booktoauthors.BookId == item.Id)
     {
@@ -35,7 +34,6 @@
     }
   }
 
-  </p>
 </div>
   }
 </div>
