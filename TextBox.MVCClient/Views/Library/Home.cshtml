@@ -27,18 +27,16 @@
 <p> @item.Title 
   
 </p>
-<div>
   by:
   <p>
-  @foreach (var item2 in Model.allAuthors)
+  foreach (var item2 in item.BookAuthors)
   {
       <i> @item2.FirstName @item2.LastName </i>
       <br>
-    } 
+    }
   }
 
   </p>
-</div>
 </div>
   }
   }

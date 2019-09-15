@@ -18,12 +18,12 @@
     @foreach (var item in Model.allGenres)
     {
      @Html.ActionLink(
-       linkText : item.BookGenre,
+       linkText : item.GenreName,
        actionName: "GetAllBooks",
        controllerName: "Library",
        routeValues: new{
          index = 1,
-         filterName = item.BookGenre
+         filterName = item.GenreName
        },
        htmlAttributes: null
       )
