@@ -1,5 +1,14 @@
 @model TextBox.MVCClient.Models.LibraryModel
-
+<head>
+  <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+    </environment>
+  <link rel ="stylesheet" type="text/css" href="Styles/Library.css">
+</head>
 <!-- Default dropright button -->
 <div class="btn-group dropright">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="1">
@@ -17,7 +26,8 @@
          filterName = item.GenreName
        },
        htmlAttributes: null
-      )   
+      )
+      <br>   
     }
   </div>
 </div>
@@ -29,7 +39,7 @@
     @foreach (var item in Model.allAuthors)
     {
      @Html.ActionLink(
-       linkText : item.FirstName,
+       linkText : item.FirstName, 
        actionName: "GetAllBooks",
        controllerName: "Library",
        routeValues: new{
@@ -37,7 +47,8 @@
          filterName = item.FirstName
        },
        htmlAttributes: null
-      )   
+      )
+      <br>   
     }
   </div>
 </div>
@@ -57,7 +68,8 @@
          filterName = item.SeriesName
        },
        htmlAttributes: null
-      )   
+      )
+      <br>   
     }
   </div>
 </div>
