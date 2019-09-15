@@ -23,9 +23,12 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
+          - task: UseDotNet@2
+            displayName: 'dotnet installer'
+            inputs:
+              version: '2.2.401'
           - script: |
               dotnet tool install --global dotnet-sonarscanner
-              dotnet build
               dotnet sonarscanner begin /k:"sudeepcb_textbox" /o:"sudeepcb" /d:sonar.login="91d4901705206cdb41a03d797ff0705815924b2f" /d:sonar.host.url="https://sonarcloud.io/"
               dotnet build
               dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=\"cobertura,opencover\" /p:Exclude=[xunit*]*
