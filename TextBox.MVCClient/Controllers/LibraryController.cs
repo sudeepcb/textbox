@@ -13,33 +13,37 @@ namespace TextBox.MVCClient.Controllers
     {
 
       LibraryModel l = new LibraryModel();
-      int i=0;
+      static int i=0;
 
         
         public IActionResult Home()
         {
-          if(i==0)
-          {l.setLists();
-          i++;}
+          l.setLists();
           return View(l);
-          //return View(l.dbList());
         }
 
         [HttpPost]
-        public IActionResult Home(List <Book> library, int filtertype)//, string param)
+        public IActionResult Home(LibraryModel m, int filtertype, List<Book> name)//, string param)
         {
-            l.SortLib(library, filtertype);
-            return Home();
+          System.Console.WriteLine("\n\n\n\n\n"+filtertype+"\n\n\n\n\n");
+          // foreach ( var b in m.library.ToList())
+          // {
+          //   System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
+          // }
+          l.setLists();
+          l.SortLib(filtertype);
+          return View(l);
         }
         
-        [HttpGet]
-        public IActionResult Home(List <Book> library, int filtertype, string param)
-        {
-            l.Search(library, filtertype);
-            return Home();
-        }
+        // [HttpGet]
+        // public IActionResult Home(LibraryModel m, int filtertype, string param)//, List<Book> library)
+        // {
+        //   l.setLists();
+        //   //l.SearchLib(filtertype);
+        //   return View(l);
+        // }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
