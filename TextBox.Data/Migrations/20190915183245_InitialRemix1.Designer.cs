@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TextBox.Data;
 
 namespace TextBox.Data.Migrations
 {
     [DbContext(typeof(TextBoxDBContext))]
-    partial class TextBoxDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190915183245_InitialRemix1")]
+    partial class InitialRemix1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +72,7 @@ namespace TextBox.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Book");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.BookAuthors", b =>
@@ -83,7 +85,7 @@ namespace TextBox.Data.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("BooksAuthors");
+                    b.ToTable("BookAuthors");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.BookGenres", b =>
@@ -96,7 +98,7 @@ namespace TextBox.Data.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("BooksGenres");
+                    b.ToTable("BookGenres");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.BookReviews", b =>

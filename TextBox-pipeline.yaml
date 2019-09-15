@@ -24,7 +24,22 @@ stages:
           vmImage: 'ubuntu-16.04'
         steps:
           - script: |
-              dotnet test
+              dotnet tool install --global dotnet-sonarscanner
+              dotnet sonarscanner begin /k:"sudeepcb_textbox" /o:"sudeepcb" /d:sonar.login="91d4901705206cdb41a03d797ff0705815924b2f" /d:sonar.host.url="https://sonarcloud.io/"
+              dotnet build
+              dotnet test --logger trx /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=\"cobertura,opencover\" /p:Exclude=[xunit*]*
+              dotnet sonarscanner end /d:sonar.login="91d4901705206cdb41a03d797ff0705815924b2f"
+          - task: PublishTestResults@2
+            displayName: 'publish result::unit-test'
+            inputs:
+              testRunner: VSTest
+              testResultsFiles: '**/*.trx'
+          - task: PublishCodeCoverageResults@1
+            displayName: 'publish result::code-coverage'
+            inputs:
+              codeCoverageTool: cobertura
+              summaryFileLocation: '**/coverage.cobertura.xml'
+              
   
   - stage: 'pack'
     condition: succeeded()
