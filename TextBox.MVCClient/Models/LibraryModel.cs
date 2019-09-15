@@ -13,6 +13,7 @@ namespace TextBox.MVCClient.Models
     public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
     public List<BookAuthors> allBookAuthors {get; set;}
+    public int filtertype;
     
     public List<Book> dbList()
     {
@@ -27,22 +28,24 @@ namespace TextBox.MVCClient.Models
       allSeries = _db.Seriess.ToList();
       allBookAuthors = _db.BooksAuthors.ToList();
     }
-    // public List<Book> OrderLibDynamic(List<Book> library, string description)
-    // {
-    //   var query = DbContext.Book
-    //     .Select()
-    //     .OrderBy(description);
-    //   return library;
-    // }
-    public void SortLib(List<Book> library,int i)
+    public void setNewList()//List<Book> Lib)
     {
-      System.Console.WriteLine("\n\n\n\n\n"+i+"\n\n\n\n\n");
+      //library = Lib;//.ToList();
+      allGenres = _db.Genres.ToList();
+      allAuthors = _db.Authors.ToList();
+      allSeries = _db.Seriess.ToList();
+      allBookAuthors = _db.BooksAuthors.ToList();
+    }
+    public void SortLib(int i)
+    {
       if(i==1)
-      //{library=library.OrderBy(b => b.Title).ToList();}
-      {}
+      //{library = library.OrderBy(l=>l.Title).ToList();}
+      {
+        library.Sort(delegate(Book x, Book y)
+          {return x.Title.CompareTo(y.Title);}       
+      );}
       if(i==2)
-      //{library=library.OrderByDescending(b => b.Title).ToList();}
-      {}
+      {library=library.OrderByDescending(b => b.Title).ToList();}
       if(i==3)
       {library=library.OrderBy(b => b.Cost).ToList();}
       if(i==4)

@@ -46,6 +46,7 @@
   <div class ="cliente">
 <p> <b>@item.Title</b> </p>
   by:
+
   @foreach (var booktoauthors in Model.allBookAuthors)
   {
     @if(booktoauthors.BookId == item.Id)
