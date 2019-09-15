@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS buildstage
 WORKDIR /aspnet
 COPY ["TextBox.MVCClient/TextBox.MVCClient.csproj", "TextBox.MVCClient/"]
-RUN dotnet restore DevopsDemo.Client/DevopsDemo.Client.csproj
+RUN dotnet restore TextBox.MVCClient/TextBox.MVCClient.csproj
 COPY . .
 WORKDIR /aspnet/TextBox.MVCClient
 RUN dotnet build TextBox.MVCClient.csproj
