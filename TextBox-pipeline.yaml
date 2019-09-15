@@ -60,7 +60,7 @@ stages:
               docker login --username=keiloconnor91 --password=Password12345
               docker image build --file Dockerfile --tag textboxp2 .
               docker image tag textboxp2 keiloconnor91/textboxp2
-              docker push keiloconnor91/devopsdem
+              docker push keiloconnor91/textboxp2
               docker logout
 
   
