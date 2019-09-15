@@ -10,30 +10,30 @@ namespace TextBox.MVCClient.Models
       private TextBoxDBContext _db = new TextBoxDBContext();
       public void AddBookToDB( Book b,Author a,Genre g)
       {
-          b.BookAuthors  = new List<Author>();
-          b.BookGenres = new List<Genre>();
+          //b.BookAuthors  = new List<Author>();
+          //b.BookGenres = new List<Genre>();
 
-          if(!AuthorInDB(a) && !GenreInDB(g))
-          {
+          // if(!AuthorInDB(a) && !GenreInDB(g))
+          // {
 
-            b.BookAuthors.Add(a);
-            b.BookGenres.Add(g);
+          //   _db.Authors.Add(a);
+          //   _db.Genres.Add(g);
 
-            _db.Books.Add(b);
-            _db.SaveChanges();
-          }
-          if(AuthorInDB(a) && !GenreInDB(g))
-          {
-            b.BookAuthors.Find(author=>author.Id == a.Id);
-            b.BookGenres.Add(g);
+          //   _db.Books.Add(b);
+          //   _db.SaveChanges();
+          // }
+          // if(AuthorInDB(a) && !GenreInDB(g))
+          // {
+          //   b.BookAuthors.Find(author=>author.Id == a.Id);
+          //   b.BookGenres.Add(g);
 
-            _db.Books.Add(b);
-            _db.SaveChanges();
-          }
-          else
-          {
+          //   _db.Books.Add(b);
+          //   _db.SaveChanges();
+          // }
+          // else
+          // {
 
-          }          
+          // }          
       }
 
       public bool AuthorInDB(Author author)
@@ -47,7 +47,7 @@ namespace TextBox.MVCClient.Models
       }
       public bool GenreInDB(Genre genre)
       {
-        if(_db.Genres.Any(g=>g.BookGenre == genre.BookGenre))
+        if(_db.Genres.Any(g=>g.GenreName == genre.GenreName))
         {
           return true;
         }
