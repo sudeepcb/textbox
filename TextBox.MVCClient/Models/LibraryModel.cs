@@ -51,14 +51,11 @@ namespace TextBox.MVCClient.Models
       if(i==4)
       {library=library.OrderByDescending(b => b.Cost).ToList();}
     }
-    //-----------------
-    // public List<Book> SortPrice(List<Book> library, string para)
-    // {
-    //   library.OrderBy(l => l.para);
-    //   return library;
-    // }
-    //------------------
     //-------------------------------------------------------------SEARCH-----------------------------------------------------
+    public void SearchLib (string param)
+    {
+      
+    }
     public List<Book> Sort (List<Book> library, int i)//, string name)
     {
       return library;
