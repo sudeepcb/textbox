@@ -43,7 +43,7 @@
     {
      <p class="dropdown-item">@Html.ActionLink(
        linkText : item.GenreName,
-       actionName: "GetAllBooks",
+       actionName: "Sort",
        controllerName: "Library",
        routeValues: new{
          index = 1,
@@ -66,7 +66,7 @@
       var fullText = item.FirstName +" "+ item.LastName;
       <p class="dropdown-item">@Html.ActionLink(
        linkText : fullText,
-       actionName: "GetAllBooks",
+       actionName: "Sort",
        controllerName: "Library",
        routeValues: new{
          index = 2,
@@ -88,7 +88,7 @@
     {
       <p class="dropdown-item">@Html.ActionLink(
        linkText : item.SeriesName,
-       actionName: "GetAllBooks",
+       actionName: "Sort",
        controllerName: "Library",
        routeValues: new{
          index = 3,
