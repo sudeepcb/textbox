@@ -7,17 +7,41 @@
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
-  <link rel ="stylesheet" type="text/css" href="Styles/Library.css">
+  <style>
+    .dropdown-item{
+      color: black;
+      margin: 0px;
+      border: green medium round;
+      border-radius: 10px;
+	    -moz-border-radius: 10px;
+	    -webkit-border-radius: 10px;
+      border-width: 1px;
+      overflow: hidden;
+    }
+    .dropdown-item:hover{
+      background-color: lightgreen;
+    }
+    .dropdown-menu{
+      margin: 0px;
+      border: green medium round;
+      border-color: black;
+      border-width: 2px;
+      border-radius: 10px;
+	    -moz-border-radius: 10px;
+	    -webkit-border-radius: 10px;
+    }
+    .dropdown:hover .dropdown-menu {
+    display: block;}</style>
 </head>
 <!-- Default dropright button -->
-<div class="btn-group dropright">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="1">
+<div class="btn-group dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" aria-haspopup="true" aria-expanded="false" value="1">
     Genre
   </button>
   <div class="dropdown-menu">
     @foreach (var item in Model.allGenres)
     {
-     @Html.ActionLink(
+     <p class="dropdown-item">@Html.ActionLink(
        linkText : item.GenreName,
        actionName: "GetAllBooks",
        controllerName: "Library",
@@ -27,19 +51,21 @@
        },
        htmlAttributes: null
       )
+      </p>
       <br>   
     }
   </div>
 </div>
-<div class="btn-group dropright">
+<div class="btn-group dropdown">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="2">
     Authors
   </button>
   <div class="dropdown-menu">
     @foreach (var item in Model.allAuthors)
     {
-     @Html.ActionLink(
-       linkText : item.FirstName, 
+      var fullText = item.FirstName +" "+ item.LastName;
+      <p class="dropdown-item">@Html.ActionLink(
+       linkText : fullText,
        actionName: "GetAllBooks",
        controllerName: "Library",
        routeValues: new{
@@ -48,18 +74,19 @@
        },
        htmlAttributes: null
       )
+      </p>
       <br>   
     }
   </div>
 </div>
-<div class="btn-group dropright">
+<div class="btn-group dropdown">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="3">
     Series 
   </button>
   <div class="dropdown-menu">
     @foreach (var item in Model.allSeries)
     {
-     @Html.ActionLink(
+      <p class="dropdown-item">@Html.ActionLink(
        linkText : item.SeriesName,
        actionName: "GetAllBooks",
        controllerName: "Library",
@@ -69,6 +96,7 @@
        },
        htmlAttributes: null
       )
+      </p>
       <br>   
     }
   </div>
