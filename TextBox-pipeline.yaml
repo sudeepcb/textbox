@@ -24,7 +24,7 @@ stages:
           vmImage: 'ubuntu-16.04'
         steps:
           - script: |
-              echo 'enter test stage'
+              dotnet test
   
   - stage: 'pack'
     condition: succeeded()
