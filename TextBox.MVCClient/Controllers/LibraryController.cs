@@ -35,13 +35,12 @@ namespace TextBox.MVCClient.Controllers
           return View(l);
         }
         
-        // [HttpGet]
-        // public IActionResult Home(LibraryModel m, int filtertype, string param)//, List<Book> library)
-        // {
-        //   l.setLists();
-        //   //l.SearchLib(filtertype);
-        //   return View(l);
-        // }
+        public IActionResult Sort(LibraryModel m, string param)//string Genrename, string Fname, string seriesName)//, List<Book> library)
+        {
+          l.setLists();
+          l.SearchLib(param);
+          return View(l);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
