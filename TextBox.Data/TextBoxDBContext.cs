@@ -7,8 +7,8 @@ namespace TextBox.Data
     {
       public DbSet<Author> Authors { get; set; }
       public DbSet<Book> Books { get; set; }
-      public DbSet<Book> BooksAuthors { get; set; }
-      public DbSet<Book> BooksGenres { get; set; }
+      public DbSet<BookAuthors> BooksAuthors { get; set; }
+      public DbSet<BookGenres> BooksGenres { get; set; }
       public DbSet<Cart> Carts { get; set; }
       public DbSet<Genre> Genres { get; set; }
       public DbSet<Order> Orders { get; set; }
@@ -30,16 +30,16 @@ namespace TextBox.Data
         builder.Entity<Book>().HasMany(r=>r.userReviews).WithOne();
         
         builder.Entity<BookAuthors>().HasKey(x=> new{x.BookId, x.AuthorId});
-        builder.Entity<BookAuthors>().HasOne(x=>x.Authors).WithMany(a=>a.BookAuthors).HasForeignKey(x => x.BookId);
-        builder.Entity<BookAuthors>().HasOne(x=>x.Books).WithMany(b=>b.BookAuthors).HasForeignKey(x => x.AuthorId);
+        builder.Entity<BookAuthors>().HasOne(x=>x.Authors).WithMany(a=>a.BookAuthors).HasForeignKey(x => x.AuthorId);
+        builder.Entity<BookAuthors>().HasOne(x=>x.Books).WithMany(b=>b.BookAuthors).HasForeignKey(x => x.BookId);
 
         builder.Entity<BookGenres>().HasKey(x=> new{x.BookId, x.GenreId});
-        builder.Entity<BookGenres>().HasOne(x=>x.Genres).WithMany(a=>a.BookGenres).HasForeignKey(x => x.BookId);
-        builder.Entity<BookGenres>().HasOne(x=>x.Books).WithMany(b=>b.BookGenres).HasForeignKey(x => x.GenreId);
+        builder.Entity<BookGenres>().HasOne(x=>x.Genres).WithMany(a=>a.BookGenres).HasForeignKey(x => x.GenreId);
+        builder.Entity<BookGenres>().HasOne(x=>x.Books).WithMany(b=>b.BookGenres).HasForeignKey(x => x.BookId);
 
         builder.Entity<BookReviews>().HasKey(x=> new{x.BookId, x.ReviewId});
-        builder.Entity<BookReviews>().HasOne(x=>x.Review).WithMany(a=>a.userReviews).HasForeignKey(x => x.BookId);
-        builder.Entity<BookReviews>().HasOne(x=>x.Books).WithMany(b=>b.userReviews).HasForeignKey(x => x.ReviewId);
+        builder.Entity<BookReviews>().HasOne(x=>x.Review).WithMany(a=>a.userReviews).HasForeignKey(x => x.ReviewId);
+        builder.Entity<BookReviews>().HasOne(x=>x.Books).WithMany(b=>b.userReviews).HasForeignKey(x => x.BookId);
 
         builder.Entity<BooksInCart>().HasKey(x=> new{x.BookId, x.CartId});
         builder.Entity<BooksInCart>().HasOne(x=>x.Cart).WithMany(c=>c.BooksInCart).HasForeignKey(x => x.BookId);
