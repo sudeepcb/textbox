@@ -24,21 +24,18 @@
  @foreach (var item in Model.library)
   {
 <div class="col-sm-2">
-<p> @item.Title 
-  
-</p>
+<p> @item.Title </p>
   by:
-  <p>
-  <!-- foreach (var item2 in item.BookAuthors) -->
+
+  @foreach (var booktoauthors in Model.allBookAuthors)
   {
-      <i> item2.FirstName item2.LastName </i>
-      <br>
+    @if(booktoauthors.BookId == item.Id)
+    {
+      <p>@booktoauthors.Authors.FirstName @booktoauthors.Authors.LastName</p>
     }
   }
 
-  </p>
 </div>
-  }
   }
 </div>
 </div>
