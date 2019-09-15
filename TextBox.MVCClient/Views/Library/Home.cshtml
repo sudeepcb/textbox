@@ -25,20 +25,22 @@
   {
 <div class="col-sm-2">
 <p> @item.Title 
-
+  
 </p>
 <div>
   by:
   <p>
-  @foreach (var item2 in item.BookAuthors)
+  @foreach (var item2 in Model.allAuthors)
   {
       <i> @item2.FirstName @item2.LastName </i>
       <br>
+    } 
   }
 
   </p>
 </div>
 </div>
+  }
   }
 </div>
 </div>
