@@ -40,10 +40,6 @@ namespace TextBox.MVCClient.Models
     {
       if(i==1)
       {library = library.OrderBy(l=>l.Title).ToList();}
-      // {
-      //   library.Sort(delegate(Book x, Book y)
-      //     {return x.Title.CompareTo(y.Title);}       
-      // );}
       if(i==2)
       {library=library.OrderByDescending(b => b.Title).ToList();}
       if(i==3)
@@ -54,7 +50,6 @@ namespace TextBox.MVCClient.Models
     //-------------------------------------------------------------SEARCH-----------------------------------------------------
     public void SearchLib (string param, int i)
     {
-      System.Console.WriteLine("\n\n\n\n\n" +param+i+" still going well \n\n\n\n\n");
       if (i == 1)
       {SearchGenre(param);}
       else if(i == 2)
@@ -78,16 +73,12 @@ namespace TextBox.MVCClient.Models
               if (bg.Genres.Id == g.Id)
               {library.Add(bg.Books);}
         }
-        /*foreach(var a in b.BookAuthors)
-            if (a.Authors.FirstName == name || a.Authors.LastName == name)
-            {returnLib.Add(b);}*/
       }
     }
 
     public void SearchAuthor(string name)
     { 
       library= new List<Book>();
-      System.Console.WriteLine("\n\n\n\n\n We made it "+name+"! \n\n\n\n\n");
       
       foreach(var a in _db.Authors.ToList())
       { if(a.FirstName.ToLower()==name.ToLower())
@@ -96,34 +87,27 @@ namespace TextBox.MVCClient.Models
               if (ba.Authors.Id == a.Id)
               {foreach (var b in _db.Books.ToList())
               if(b.Id==ba.BookId)
-              {System.Console.WriteLine("\n\n\n\n\n "+b.Title+"! \n\n\n\n\n");
-                library.Add(b);}}
+              {library.Add(b);}}
         }
-    /*public List<Book> SearchGenre(List<Book> library, string name)
-    {
-      List<Book> returnLib = new List<Book>{};
-      foreach(var b in library)
-      {
-        foreach(var a in b.BookGenres)
-            if (a.Genres.GenreName == name)
-            {returnLib.Add(b);}*/
       }
     }
     public void SearchSeries(string name)
     {
       library= new List<Book>();
-      System.Console.WriteLine("\n\n\n\n\n We made it genre! \n\n\n\n\n");
-      
-      System.Console.WriteLine("\n\n\n\n\n"+name.ToLower()+"\n\n\n\n\n");
+     
       foreach(var bs in _db.BookInSeries.ToList())
       {
-        System.Console.WriteLine("\n\n\n\n\n"+bs.Series.SeriesName.ToLower()+"\n\n\n\n\n");
         if (bs.Series.SeriesName==name)
         {
-          System.Console.WriteLine("\n\n\n\n\n "+bs.Books.Title+" \n\n\n\n\n");
           library.Add(bs.Books);
         }
       }
+    }
+    //---------------------------------------------------------------------
+    public void Home(string filterName, int index)
+    {
+      setSearchLists();
+      SearchLib(filterName,index);
     }
   }
 }
