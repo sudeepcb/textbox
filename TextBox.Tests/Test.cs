@@ -285,7 +285,6 @@ namespace TextBox.Tests
           b1.BookAuthors.Add(ba1);
           b2.BookAuthors.Add(ba2);
 
-
           List<Book> Testlib = new List<Book>();
           List<Book> Expectedlib = new List<Book>();
 
@@ -298,9 +297,47 @@ namespace TextBox.Tests
 
           Assert.NotNull(testresult);
           Assert.IsType<List<Book>>(testresult);
-          /*Console.WriteLine(testresult[0].Title);
-          Console.WriteLine(Expectedlib[0].Title);*/
           Assert.True(Expectedlib.Any() == testresult.Any());
+      }
+
+      [Fact]      
+      public void TestGenre()
+      {
+        LibraryModel lm = new LibraryModel();
+        Book b1 = new Book();
+        Book b2 = new Book();
+
+        b1.BookGenres = new List<BookGenres>();
+        b2.BookGenres = new List<BookGenres>();
+
+        BookGenres bg1 = new BookGenres();
+        Genre g1 = new Genre();
+
+        g1.GenreName = "testGenre";
+        bg1.Genres = g1;
+
+        BookGenres bg2 = new BookGenres();
+        Genre g2 = new Genre();
+
+        g2.GenreName = "testGenre1";
+        bg2.Genres = g2;
+
+        b1.BookGenres.Add(bg1);
+        b2.BookGenres.Add(bg2);
+
+        List<Book> Testlib = new List<Book>();
+        List<Book> Expectedlib = new List<Book>(); 
+
+        Testlib.Add(b1);
+        Testlib.Add(b2);
+
+        Expectedlib.Add(b1);
+
+        var testresult = lm.SearchGenre(Testlib,"testGenre");
+
+        Assert.NotNull(testresult);
+        Assert.IsType<List<Book>>(testresult);
+        Assert.True(Expectedlib.Any() == testresult.Any());
       }
     }
 }
