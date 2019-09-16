@@ -52,6 +52,8 @@ namespace TextBox.MVCClient.Controllers
       return View(l);
     }
 
+    
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
