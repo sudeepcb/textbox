@@ -10,8 +10,8 @@ using TextBox.Data;
 namespace TextBox.Data.Migrations
 {
     [DbContext(typeof(TextBoxDBContext))]
-    [Migration("20190916161226_Initial99")]
-    partial class Initial99
+    [Migration("20190916191242_Issue00")]
+    partial class Issue00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,23 +123,6 @@ namespace TextBox.Data.Migrations
                     b.ToTable("BookInSeries");
                 });
 
-            modelBuilder.Entity("TextBox.Domain.Models.BooksInCart", b =>
-                {
-                    b.Property<int>("BookId");
-
-                    b.Property<int>("CartId");
-
-                    b.Property<int?>("CartId1");
-
-                    b.Property<int?>("CartUserId");
-
-                    b.HasKey("BookId", "CartId");
-
-                    b.HasIndex("CartId1", "CartUserId");
-
-                    b.ToTable("BooksInCarts");
-                });
-
             modelBuilder.Entity("TextBox.Domain.Models.BooksOnOrder", b =>
                 {
                     b.Property<int>("BookId");
@@ -196,23 +179,14 @@ namespace TextBox.Data.Migrations
 
                     b.Property<decimal>("TotalCost");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("TextBox.Domain.Models.OrderHistory", b =>
-                {
-                    b.Property<int>("OrderId");
-
                     b.Property<int>("UserId");
 
-                    b.HasKey("OrderId", "UserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("OrderHistory");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.Review", b =>
@@ -336,18 +310,6 @@ namespace TextBox.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TextBox.Domain.Models.BooksInCart", b =>
-                {
-                    b.HasOne("TextBox.Domain.Models.Book", "Books")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TextBox.Domain.Models.Cart", "Cart")
-                        .WithMany("BooksInCart")
-                        .HasForeignKey("CartId1", "CartUserId");
-                });
-
             modelBuilder.Entity("TextBox.Domain.Models.BooksOnOrder", b =>
                 {
                     b.HasOne("TextBox.Domain.Models.Order", "Order")
@@ -369,16 +331,11 @@ namespace TextBox.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TextBox.Domain.Models.OrderHistory", b =>
+            modelBuilder.Entity("TextBox.Domain.Models.Order", b =>
                 {
-                    b.HasOne("TextBox.Domain.Models.Order", "Order")
-                        .WithMany("OrderHistory")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("TextBox.Domain.Models.User", "User")
-                        .WithOne("OrderHistory")
-                        .HasForeignKey("TextBox.Domain.Models.OrderHistory", "UserId")
+                        .WithOne("Order")
+                        .HasForeignKey("TextBox.Domain.Models.Order", "UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
