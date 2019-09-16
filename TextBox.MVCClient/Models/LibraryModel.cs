@@ -78,6 +78,9 @@ namespace TextBox.MVCClient.Models
               if (bg.Genres.Id == g.Id)
               {library.Add(bg.Books);}
         }
+        /*foreach(var a in b.BookAuthors)
+            if (a.Authors.FirstName == name || a.Authors.LastName == name)
+            {returnLib.Add(b);}*/
       }
     }
 
@@ -96,6 +99,14 @@ namespace TextBox.MVCClient.Models
               {System.Console.WriteLine("\n\n\n\n\n "+b.Title+"! \n\n\n\n\n");
                 library.Add(b);}}
         }
+    /*public List<Book> SearchGenre(List<Book> library, string name)
+    {
+      List<Book> returnLib = new List<Book>{};
+      foreach(var b in library)
+      {
+        foreach(var a in b.BookGenres)
+            if (a.Genres.GenreName == name)
+            {returnLib.Add(b);}*/
       }
     }
     public void SearchSeries(string name)
