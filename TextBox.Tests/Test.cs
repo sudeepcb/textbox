@@ -233,6 +233,65 @@ namespace TextBox.Tests
 
     public class LibraryModelSearches
     {
+      [Fact]
+      public void TestSearch()
+      {
+          LibraryModel lm = new LibraryModel();
+          Book b1 = new Book();
+          Book b2 = new Book();
 
+          b1.Title = "Title";
+          b2.Title = "Title2";
+
+          List<Book> Testlib = new List<Book>();
+
+          Testlib.Add(b1);
+          Testlib.Add(b2);
+
+          var testresult = lm.Search(Testlib,-1);
+
+          Assert.NotNull(testresult);
+          Assert.IsType<List<Book>>(testresult);
+      }
+
+      [Fact]
+      public void TestSearchAuthor()
+      {
+          LibraryModel lm = new LibraryModel();
+          Book b1 = new Book();
+          Book b2 = new Book();
+
+          b1.BookAuthors = new List<BookAuthors>();
+          b2.BookAuthors = new List<BookAuthors>();
+
+          BookAuthors ba1 = new BookAuthors();
+          Author a1 = new Author();
+
+          a1.FirstName = "author fn1";
+          a1.LastName = "author ln1";
+          ba1.Authors = a1;
+
+          BookAuthors ba2 = new BookAuthors();
+          Author a2 = new Author();
+
+          a2.FirstName = "author fn2";
+          a2.LastName = "author ln2";
+          ba2.Authors = a2;
+
+          b1.BookAuthors.Add(ba1);
+          b2.BookAuthors.Add(ba2);
+
+
+          List<Book> Testlib = new List<Book>();
+
+          Testlib.Add(b1);
+          Testlib.Add(b2);
+
+          var testresult = lm.SearchAuthor(Testlib,"author fn1");
+
+          Assert.NotNull(testresult);
+          Assert.IsType<List<Book>>(testresult);
+          //Assert.True(Testlib.Any() == testresult.Any());
+      }
     }
 }
