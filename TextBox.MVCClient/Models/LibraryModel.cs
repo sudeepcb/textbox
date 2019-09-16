@@ -65,23 +65,25 @@ namespace TextBox.MVCClient.Models
 
     public void SearchGenre(string name)
     {
+      library= new List<Book>();
       System.Console.WriteLine("\n\n\n\n\n We made it genre! \n\n\n\n\n");
       
       System.Console.WriteLine("\n\n\n\n\n"+name.ToLower()+"\n\n\n\n\n");
-      foreach(var a in _db.Authors.ToList())
+      foreach(var g in _db.Genres.ToList())
       {
-        System.Console.WriteLine("\n\n\n\n\n"+a.LastName.ToLower()+"\n\n\n\n\n");
-        if(a.LastName.ToLower()==name.ToLower())
+        System.Console.WriteLine("\n\n\n\n\n"+g.GenreName.ToLower()+"\n\n\n\n\n");
+        if(g.GenreName.ToLower()==name.ToLower())
         {
-          foreach(var ba in _db.BooksAuthors)
-              if (ba.Authors.Id == a.Id)
-              {library.Add(ba.Books);}
+          foreach(var bg in _db.BooksGenres)
+              if (bg.Genres.Id == g.Id)
+              {library.Add(bg.Books);}
         }
       }
     }
 
     public void SearchAuthor(string name)
-    { library= new List<Book>();
+    { 
+      library= new List<Book>();
       System.Console.WriteLine("\n\n\n\n\n We made it "+name+"! \n\n\n\n\n");
       
       foreach(var a in _db.Authors.ToList())
@@ -98,15 +100,17 @@ namespace TextBox.MVCClient.Models
     }
     public void SearchSeries(string name)
     {
-      foreach(var s in _db.Seriess.ToList())
-      {
-        System.Console.WriteLine("\n\n\n\n\n We made it series! \n\n\n\n\n");
+      library= new List<Book>();
+      System.Console.WriteLine("\n\n\n\n\n We made it genre! \n\n\n\n\n");
       
-        if(s.SeriesName.ToLower()==name.ToLower())
+      System.Console.WriteLine("\n\n\n\n\n"+name.ToLower()+"\n\n\n\n\n");
+      foreach(var bs in _db.BookInSeries.ToList())
+      {
+        System.Console.WriteLine("\n\n\n\n\n"+bs.Series.SeriesName.ToLower()+"\n\n\n\n\n");
+        if (bs.Series.SeriesName==name)
         {
-          // foreach(var bg in _db..ToList())
-          //     if (bg.GenreId == s.Id)
-          //     {library.Add(ba.Books);}
+          System.Console.WriteLine("\n\n\n\n\n "+bs.Books.Title+" \n\n\n\n\n");
+          library.Add(bs.Books);
         }
       }
     }

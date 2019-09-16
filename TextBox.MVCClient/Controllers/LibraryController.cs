@@ -18,6 +18,8 @@ namespace TextBox.MVCClient.Controllers
     [HttpGet]
     public IActionResult Home()
     {
+      System.Console.WriteLine("\n\n\n\n\n True Home \n\n\n\n\n");
+      
       l.setLists();
       return View(l);
     }
@@ -35,6 +37,8 @@ namespace TextBox.MVCClient.Controllers
     [HttpPost]
     public IActionResult Home(int filtertype)//, List<Book> name, string param)
     {
+      System.Console.WriteLine("\n\n\n\n\n Home just filtertype \n\n\n\n\n");
+      
       l.setLists();
       l.SortLib(filtertype);
       return View(l);
@@ -42,6 +46,8 @@ namespace TextBox.MVCClient.Controllers
     
     public IActionResult Sort(string filterName, int index)//, List<Book> library)
     {
+      System.Console.WriteLine("\n\n\n\n\n Sort \n\n\n\n\n");
+      
       Home(filterName, index);
       return View(l);
     }
