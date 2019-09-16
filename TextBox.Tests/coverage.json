@@ -4,67 +4,67 @@
       "TextBox.Data.TextBoxDBContext": {
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Author> TextBox.Data.TextBoxDBContext::get_Authors()": {
           "Lines": {
-            "8": 1
+            "8": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Book> TextBox.Data.TextBoxDBContext::get_Books()": {
           "Lines": {
-            "9": 1
+            "9": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.BookAuthors> TextBox.Data.TextBoxDBContext::get_BooksAuthors()": {
           "Lines": {
-            "10": 1
+            "10": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.BookGenres> TextBox.Data.TextBoxDBContext::get_BooksGenres()": {
           "Lines": {
-            "11": 1
+            "11": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Cart> TextBox.Data.TextBoxDBContext::get_Carts()": {
           "Lines": {
-            "12": 1
+            "12": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Genre> TextBox.Data.TextBoxDBContext::get_Genres()": {
           "Lines": {
-            "13": 1
+            "13": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Order> TextBox.Data.TextBoxDBContext::get_Orders()": {
           "Lines": {
-            "14": 1
+            "14": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.OrderHistory> TextBox.Data.TextBoxDBContext::get_OrderHistory()": {
           "Lines": {
-            "15": 1
+            "15": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Review> TextBox.Data.TextBoxDBContext::get_Reviews()": {
           "Lines": {
-            "16": 1
+            "16": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.Series> TextBox.Data.TextBoxDBContext::get_Seriess()": {
           "Lines": {
-            "17": 1
+            "17": 3
           },
           "Branches": []
         },
         "Microsoft.EntityFrameworkCore.DbSet`1<TextBox.Domain.Models.User> TextBox.Data.TextBoxDBContext::get_Users()": {
           "Lines": {
-            "18": 1
+            "18": 3
           },
           "Branches": []
         },
@@ -5303,7 +5303,7 @@
         },
         "System.String TextBox.Domain.Models.Book::get_Title()": {
           "Lines": {
-            "9": 2
+            "9": 6
           },
           "Branches": []
         },
@@ -5381,12 +5381,12 @@
         },
         "System.Void TextBox.Domain.Models.Book::.ctor()": {
           "Lines": {
-            "23": 2,
-            "24": 2,
-            "25": 2,
-            "26": 2,
-            "27": 2,
-            "29": 2
+            "23": 6,
+            "24": 6,
+            "25": 6,
+            "26": 6,
+            "27": 6,
+            "29": 6
           },
           "Branches": []
         }
@@ -6347,10 +6347,10 @@
         },
         "System.Collections.Generic.List`1<TextBox.Domain.Models.Book> TextBox.MVCClient.Models.LibraryModel::SortAsc(System.Collections.Generic.List`1<TextBox.Domain.Models.Book>)": {
           "Lines": {
-            "67": 0,
-            "68": 0,
-            "69": 0,
-            "70": 0
+            "67": 2,
+            "68": 2,
+            "69": 2,
+            "70": 2
           },
           "Branches": [
             {
@@ -6359,7 +6359,7 @@
               "EndOffset": 10,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 68,
@@ -6367,7 +6367,7 @@
               "EndOffset": 33,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 2
             }
           ]
         },
@@ -6751,7 +6751,7 @@
         },
         "System.Void TextBox.MVCClient.Models.LibraryModel::.ctor()": {
           "Lines": {
-            "10": 1
+            "10": 3
           },
           "Branches": []
         }
