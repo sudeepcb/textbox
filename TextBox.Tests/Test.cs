@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -267,7 +268,7 @@ namespace TextBox.Tests
           BookAuthors ba1 = new BookAuthors();
           Author a1 = new Author();
 
-          a1.FirstName = "author fn1";
+          a1.FirstName = "author";
           a1.LastName = "author ln1";
           ba1.Authors = a1;
 
@@ -278,20 +279,28 @@ namespace TextBox.Tests
           a2.LastName = "author ln2";
           ba2.Authors = a2;
 
+          b1.Title = "A";
+          b2.Title = "B";
+
           b1.BookAuthors.Add(ba1);
           b2.BookAuthors.Add(ba2);
 
 
           List<Book> Testlib = new List<Book>();
+          List<Book> Expectedlib = new List<Book>();
 
           Testlib.Add(b1);
           Testlib.Add(b2);
 
-          var testresult = lm.SearchAuthor(Testlib,"author fn1");
+          Expectedlib.Add(b1);
+
+          var testresult = lm.SearchAuthor(Testlib,"author");
 
           Assert.NotNull(testresult);
           Assert.IsType<List<Book>>(testresult);
-          //Assert.True(Testlib.Any() == testresult.Any());
+          /*Console.WriteLine(testresult[0].Title);
+          Console.WriteLine(Expectedlib[0].Title);*/
+          Assert.True(Expectedlib.Any() == testresult.Any());
       }
     }
 }
