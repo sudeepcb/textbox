@@ -107,7 +107,7 @@ namespace TextBox.MVCClient.Models
       foreach(var b in library)
       {
         foreach(var a in b.BookAuthors)
-            if (a.Authors.FirstName == "name" || a.Authors.LastName == "name")
+            if (a.Authors.FirstName == name || a.Authors.LastName == name)
             {returnLib.Add(b);}
       }
       return returnLib;
@@ -118,8 +118,8 @@ namespace TextBox.MVCClient.Models
       List<Book> returnLib = new List<Book>{};
       foreach(var b in library)
       {
-        foreach(var a in b.BookAuthors)
-            if (a.Authors.FirstName == "name" || a.Authors.LastName == "name")
+        foreach(var a in b.BookGenres)
+            if (a.Genres.GenreName == name)
             {returnLib.Add(b);}
       }
       return returnLib;
