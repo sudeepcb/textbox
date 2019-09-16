@@ -5,13 +5,13 @@ namespace TextBox.Data
 {
     public class TextBoxDBContext : DbContext
     {
+      public DbSet<BooksInCart> BooksInCarts {get; set;}
       public DbSet<Author> Authors { get; set; }
       public DbSet<Book> Books { get; set; }
       public DbSet<BookAuthors> BooksAuthors { get; set; }
       public DbSet<BookGenres> BooksGenres { get; set; }
       public DbSet<BookSeries> BookInSeries { get; set; }      
       public DbSet<BookReviews> BookReviews { get; set; }
-      public DbSet<BooksInCart> BooksInCarts {get; set;}
       public DbSet<BooksOnOrder> BooksOnOrder {get; set;}
       public DbSet<Cart> Carts { get; set; }
       public DbSet<Genre> Genres { get; set; }
