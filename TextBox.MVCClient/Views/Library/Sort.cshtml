@@ -43,7 +43,15 @@
   {
 <div class="col-sm-2">
   <div class ="cliente">
-<p> <b>@item.Title</b> </p>
+<p> <b>@Html.ActionLink(
+       linkText : item.Title,
+       actionName: "Detail",
+       controllerName: "Book",
+       routeValues: new{
+       filterName = item.Id
+       },
+       htmlAttributes: null
+      )</b> </p>
   by:
 
   @foreach (var booktoauthors in Model.allBookAuthors)
