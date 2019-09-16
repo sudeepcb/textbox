@@ -51,7 +51,7 @@ namespace TextBox.Tests
       }
     }
 
-    public class TestLibraryModel
+    public class TestLibraryModelSorts
     {
         [Fact]
         public void TestLibrarySort()
@@ -229,5 +229,10 @@ namespace TextBox.Tests
           Assert.IsType<List<Book>>(testresult);
           Assert.True(Expectedlib.Any() == testresult.Any());
         }
+    }
+
+    public class LibraryModelSearches
+    {
+
     }
 }
