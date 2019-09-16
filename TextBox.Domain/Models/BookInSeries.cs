@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace TextBox.Domain.Models
 {
-  public class BookInSeries
-  {
-    public int Id { get; set; }
-    public Series Series { get; set; }
-    public List<Book> Books { get; set; }
-    
-  }
+    public class BookSeries
+    {
+        public int BookId {get; set;} 
+        public int SeriesId {get; set;} 
+        public Book Books {get; set;} 
+        public Series Series {get; set;}
+    }
 }

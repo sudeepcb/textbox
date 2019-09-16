@@ -10,11 +10,10 @@ namespace TextBox.Domain.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Cart CurrentCart { get; set; }
-        public virtual ICollection<Book> BooksInOrder { get; set; }
-        public virtual OrderHistory OrderHistory {get; set;}
-
+        public virtual Order Order { get; set; }
         public int ReviewId { get; set; }
         public Review Review { get; set; }
+        public virtual ICollection<Book> BooksInOrder { get; set; }
 
         User()
         {
