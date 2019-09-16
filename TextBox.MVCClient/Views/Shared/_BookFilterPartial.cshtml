@@ -1,0 +1,103 @@
+@model TextBox.MVCClient.Models.BookModel
+<head>
+  <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+    </environment>
+  <style>
+    .dropdown-item{
+      color: black;
+      margin: 0px;
+      border: green medium round;
+      border-radius: 10px;
+	    -moz-border-radius: 10px;
+	    -webkit-border-radius: 10px;
+      border-width: 1px;
+      overflow: hidden;
+    }
+    .dropdown-item:hover{
+      background-color: lightgreen;
+    }
+    .dropdown-menu{
+      margin: 0px;
+      border: green medium round;
+      border-color: black;
+      border-width: 2px;
+      border-radius: 10px;
+	    -moz-border-radius: 10px;
+	    -webkit-border-radius: 10px;
+    }
+    .dropdown:hover .dropdown-menu {
+    display: block;}</style>
+</head>
+<!-- Default dropright button -->
+<div class="btn-group dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" aria-haspopup="true" aria-expanded="false" value="1">
+    Genre
+  </button>
+  <div class="dropdown-menu">
+    @foreach (var item in Model.allGenres)
+    {
+     <p class="dropdown-item">@Html.ActionLink(
+       linkText : item.GenreName,
+       actionName: "Sort",
+       controllerName: "Library",
+       routeValues: new{
+         index = 1,
+         filterName = item.GenreName
+       },
+       htmlAttributes: null
+      )
+      </p>
+      <br>   
+    }
+  </div>
+</div>
+<div class="btn-group dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="2">
+    Authors
+  </button>
+  <div class="dropdown-menu">
+    @foreach (var item in Model.allAuthors)
+    {
+      var fullText = item.FirstName +" "+ item.LastName;
+      <p class="dropdown-item">@Html.ActionLink(
+       linkText : fullText,
+       actionName: "Sort",
+       controllerName: "Library",
+       routeValues: new{
+         index = 2,
+         filterName = item.FirstName
+       },
+       htmlAttributes: null
+      )
+      </p>
+      <br>   
+    }
+  </div>
+</div>
+<div class="btn-group dropdown">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="3">
+    Series 
+  </button>
+  <div class="dropdown-menu">
+    @foreach (var item in Model.allSeries)
+    {
+      <p class="dropdown-item">@Html.ActionLink(
+       linkText : item.SeriesName,
+       actionName: "Sort",
+       controllerName: "Library",
+       routeValues: new{
+         index = 3,
+         filterName = item.SeriesName
+       },
+       htmlAttributes: null
+      )
+      </p>
+      <br>   
+    }
+  </div>
+</div>
