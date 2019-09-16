@@ -5,7 +5,7 @@ using TextBox.Domain.Models;
 
 namespace TextBox.MVCClient.Models
 {
-  public class UserModel
+  public class BookModel
   {
     public TextBoxDBContext _db = new TextBoxDBContext();
     public Book bookreturn {get; set;}
@@ -14,7 +14,7 @@ namespace TextBox.MVCClient.Models
     public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
     
-    public void returnBook(int filtertype)
+    public void returnBook(int filter)
     {
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
@@ -23,7 +23,7 @@ namespace TextBox.MVCClient.Models
 
       foreach (var b in _db.Books.ToList())
       {
-        if (b.Id==filtertype)
+        if (b.Id==filter)
         {
           bookreturn=b;
           foreach (var ba in _db.BooksAuthors.ToList())

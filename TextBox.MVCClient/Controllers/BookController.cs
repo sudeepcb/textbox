@@ -4,18 +4,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TextBox.Data;
 using TextBox.Domain.Models;
 using TextBox.MVCClient.Models;
 
 namespace TextBox.MVCClient.Controllers
 {
-    
     public class BookController : Controller
     {
-        public IActionResult Detail()
+        BookModel b = new BookModel();
+        public IActionResult Detail(int bookId)
         {
-            return View();
+          b.returnBook(bookId);
+            return View(b);
         }
         [HttpGet]
         public IActionResult Create()
