@@ -22,8 +22,10 @@ namespace TextBox.MVCClient.Models
       allAuthors = _db.Authors.ToList();
 
       foreach (var b in _db.Books.ToList())
-      {bookreturn = new Book();
-      authorreturn = new Author();
+      {
+        bookreturn = new Book();
+        authorreturn = new Author();
+        
         if (b.Id==filter)
         {
           bookreturn=b;

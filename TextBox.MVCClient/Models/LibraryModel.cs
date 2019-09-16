@@ -69,7 +69,8 @@ namespace TextBox.MVCClient.Models
         if(g.GenreName.ToLower()==name.ToLower())
         {
           foreach(var bg in _db.BooksGenres)
-          {
+          {System.Console.WriteLine("\n\n\n\n\n "+bg.Books.Title+" \n\n\n\n\n");
+      
               if (bg.Genres.Id == g.Id)
               {library.Add(bg.Books);}
           }
@@ -95,7 +96,7 @@ namespace TextBox.MVCClient.Models
     }
     public void SearchSeries(string name)
     {
-      System.Console.WriteLine("\n\n\n\n\n We made it library! \n\n\n\n\n");
+      System.Console.WriteLine("\n\n\n\n\n We made it series! \n\n\n\n\n");
       library= new List<Book>();
      
       foreach(var bs in _db.BookInSeries.ToList())
