@@ -9,44 +9,53 @@ using TextBox.MVCClient.Models;
 
 namespace TextBox.MVCClient.Controllers
 {
-    public class LibraryController : Controller
+  public class LibraryController : Controller
+  {
+
+    LibraryModel l = new LibraryModel();
+      
+      
+    [HttpGet]
+    public IActionResult Home()
     {
-
-      LibraryModel l = new LibraryModel();
-      static int i=0;
-
-        
-        public IActionResult Home()
-        {
-          l.setLists();
-          return View(l);
-        }
-
-        [HttpPost]
-        public IActionResult Home(LibraryModel m, int filtertype, List<Book> name)//, string param)
-        {
-          System.Console.WriteLine("\n\n\n\n\n"+filtertype+"\n\n\n\n\n");
-          // foreach ( var b in m.library.ToList())
-          // {
-          //   System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
-          // }
-          l.setLists();
-          l.SortLib(filtertype);
-          return View(l);
-        }
-        
-        // [HttpGet]
-        // public IActionResult Home(LibraryModel m, int filtertype, string param)//, List<Book> library)
-        // {
-        //   l.setLists();
-        //   //l.SearchLib(filtertype);
-        //   return View(l);
-        // }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+      System.Console.WriteLine("\n\n\n\n\n True Home \n\n\n\n\n");
+      
+      l.setLists();
+      return View(l);
     }
+
+    public void Home(string filterName, int index)
+    {
+      System.Console.WriteLine("\n\n\n\n\n Things are going well \n\n\n\n\n");
+      l.setSearchLists();
+      l.SearchLib(filterName,index);
+      foreach (var a in l.library)
+      {System.Console.WriteLine("\n\n\n\n\n "+a.Title+" \n\n\n\n\n");}
+      System.Console.WriteLine("\n\n\n\n\n going to view \n\n\n\n\n");
+    }
+
+    [HttpPost]
+    public IActionResult Home(int filtertype)//, List<Book> name, string param)
+    {
+      System.Console.WriteLine("\n\n\n\n\n Home just filtertype \n\n\n\n\n");
+      
+      l.setLists();
+      l.SortLib(filtertype);
+      return View(l);
+    }
+    
+    public IActionResult Sort(string filterName, int index)//, List<Book> library)
+    {
+      System.Console.WriteLine("\n\n\n\n\n Sort \n\n\n\n\n");
+      
+      Home(filterName, index);
+      return View(l);
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+  }
 }
