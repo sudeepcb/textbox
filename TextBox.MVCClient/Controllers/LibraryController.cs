@@ -14,27 +14,35 @@ namespace TextBox.MVCClient.Controllers
 
     LibraryModel l = new LibraryModel();
       
+      
+    [HttpGet]
     public IActionResult Home()
     {
       l.setLists();
       return View(l);
     }
 
-    [HttpPost]
-    public IActionResult Home(LibraryModel m, int filtertype)//, List<Book> name, string param)
+    public void Home(string filterName, int index)
     {
-      System.Console.WriteLine("\n\n\n\n\n"+filtertype+"\n\n\n\n\n");
+      System.Console.WriteLine("\n\n\n\n\n Things are going well \n\n\n\n\n");
+      l.setSearchLists();
+      l.SearchLib(filterName,index);
+      foreach (var a in l.library)
+      {System.Console.WriteLine("\n\n\n\n\n "+a.Title+" \n\n\n\n\n");}
+      System.Console.WriteLine("\n\n\n\n\n going to view \n\n\n\n\n");
+    }
+
+    [HttpPost]
+    public IActionResult Home(int filtertype)//, List<Book> name, string param)
+    {
       l.setLists();
       l.SortLib(filtertype);
       return View(l);
     }
     
-    [HttpPost]
-    public IActionResult Home(LibraryModel m, string param)//string Genrename, string Fname, string seriesName)//, List<Book> library)
+    public IActionResult Sort(string filterName, int index)//, List<Book> library)
     {
-      System.Console.WriteLine("\n\n\n\n\n"+param+"\n\n\n\n\n");
-      l.setLists();
-      l.SearchLib(param);
+      Home(filterName, index);
       return View(l);
     }
 

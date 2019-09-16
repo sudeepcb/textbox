@@ -56,8 +56,6 @@ namespace TextBox.Data.Migrations
 
                     b.Property<DateTime>("ReleaseDate");
 
-                    b.Property<int?>("SeriesId");
-
                     b.Property<string>("Synopsis");
 
                     b.Property<string>("Title");
@@ -65,8 +63,6 @@ namespace TextBox.Data.Migrations
                     b.Property<int?>("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SeriesId");
 
                     b.HasIndex("UserId");
 
@@ -112,15 +108,34 @@ namespace TextBox.Data.Migrations
                     b.ToTable("BookReviews");
                 });
 
+            modelBuilder.Entity("TextBox.Domain.Models.BookSeries", b =>
+                {
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("SeriesId");
+
+                    b.HasKey("BookId", "SeriesId");
+
+                    b.HasIndex("SeriesId");
+
+                    b.ToTable("BookInSeries");
+                });
+
             modelBuilder.Entity("TextBox.Domain.Models.BooksInCart", b =>
                 {
                     b.Property<int>("BookId");
 
                     b.Property<int>("CartId");
 
+                    b.Property<int?>("CartId1");
+
+                    b.Property<int?>("CartUserId");
+
                     b.HasKey("BookId", "CartId");
 
-                    b.ToTable("BooksInCart");
+                    b.HasIndex("CartId1", "CartUserId");
+
+                    b.ToTable("BooksInCarts");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.BooksOnOrder", b =>
@@ -131,20 +146,20 @@ namespace TextBox.Data.Migrations
 
                     b.HasKey("BookId", "OrderId");
 
+                    b.HasIndex("OrderId");
+
                     b.ToTable("BooksOnOrder");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.Cart", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("TotalCost");
+                    b.Property<int>("Id");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("Id");
+                    b.Property<decimal>("TotalCost");
+
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -179,7 +194,12 @@ namespace TextBox.Data.Migrations
 
                     b.Property<decimal>("TotalCost");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -262,10 +282,6 @@ namespace TextBox.Data.Migrations
 
             modelBuilder.Entity("TextBox.Domain.Models.Book", b =>
                 {
-                    b.HasOne("TextBox.Domain.Models.Series")
-                        .WithMany("BooksInSeries")
-                        .HasForeignKey("SeriesId");
-
                     b.HasOne("TextBox.Domain.Models.User")
                         .WithMany("BooksInOrder")
                         .HasForeignKey("UserId");
@@ -310,29 +326,41 @@ namespace TextBox.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("TextBox.Domain.Models.BookSeries", b =>
+                {
+                    b.HasOne("TextBox.Domain.Models.Book", "Books")
+                        .WithMany("BooksInSeries")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TextBox.Domain.Models.Series", "Series")
+                        .WithMany("BooksInSeries")
+                        .HasForeignKey("SeriesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("TextBox.Domain.Models.BooksInCart", b =>
                 {
                     b.HasOne("TextBox.Domain.Models.Book", "Books")
-                        .WithMany()
+                        .WithMany("BooksInCart")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TextBox.Domain.Models.Cart", "Cart")
                         .WithMany("BooksInCart")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CartId1", "CartUserId");
                 });
 
             modelBuilder.Entity("TextBox.Domain.Models.BooksOnOrder", b =>
                 {
-                    b.HasOne("TextBox.Domain.Models.Book", "Books")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("TextBox.Domain.Models.Order", "Order")
                         .WithMany("BooksOnOrder")
                         .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TextBox.Domain.Models.Book", "Books")
+                        .WithMany("BooksOnOrder")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -341,6 +369,14 @@ namespace TextBox.Data.Migrations
                     b.HasOne("TextBox.Domain.Models.User", "User")
                         .WithOne("CurrentCart")
                         .HasForeignKey("TextBox.Domain.Models.Cart", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TextBox.Domain.Models.Order", b =>
+                {
+                    b.HasOne("TextBox.Domain.Models.User", "User")
+                        .WithOne("Order")
+                        .HasForeignKey("TextBox.Domain.Models.Order", "UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
