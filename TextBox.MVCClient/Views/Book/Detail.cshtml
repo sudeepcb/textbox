@@ -60,7 +60,7 @@
   background-color: black;
   position: fixed;
   top: 60%;
-  left: 62%;
+  left: 65%;
   width: auto;
   height: 10%;
   border: black medium solid;
@@ -118,7 +118,16 @@
 </div>
 </div>
 <button type="button" class="mainbutton btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-shopping-cart" style = "color:white; font-size:1vw"><b>Add Book to Cart</b></span></button>
+      @{var useBookId = @Model.bookreturn.Id;}
+      <span class="glyphicon glyphicon-shopping-cart" style = "color:white; font-size:1vw"><large>@Html.ActionLink(
+       linkText : "Add to Cart",
+       actionName: "ViewCart",
+       controllerName: "Cart",
+       routeValues: new{
+         filterName = useBookId
+       },
+       htmlAttributes: null
+      )</large></span></button>
   <div class = "container">
   <div class = "mainsummary">
     <p style = "color:black; font-size:1.5vw"><b>Synopsis:</b><p>
