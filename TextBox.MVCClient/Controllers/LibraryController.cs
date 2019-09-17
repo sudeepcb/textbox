@@ -24,18 +24,7 @@ namespace TextBox.MVCClient.Controllers
       return View(l);
     }
 
-    public void Home(string filterName, int index)
-    {
-      System.Console.WriteLine("\n\n\n\n\n Things are going well \n\n\n\n\n");
-      l.setSearchLists();
-      l.SearchLib(filterName,index);
-      foreach (var a in l.library)
-      {System.Console.WriteLine("\n\n\n\n\n "+a.Title+" \n\n\n\n\n");}
-      System.Console.WriteLine("\n\n\n\n\n going to view \n\n\n\n\n");
-    }
-
-    [HttpPost]
-    public IActionResult Home(int filtertype)//, List<Book> name, string param)
+    public IActionResult Home(int filtertype)
     {
       System.Console.WriteLine("\n\n\n\n\n Home just filtertype \n\n\n\n\n");
       
@@ -44,11 +33,10 @@ namespace TextBox.MVCClient.Controllers
       return View(l);
     }
     
-    public IActionResult Sort(string filterName, int index)//, List<Book> library)
+    public IActionResult Sort(string filterName, int index)
     {
       System.Console.WriteLine("\n\n\n\n\n Sort \n\n\n\n\n");
-      
-      Home(filterName, index);
+      l.Home(filterName, index);
       return View(l);
     }
 
