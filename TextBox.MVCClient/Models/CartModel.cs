@@ -85,6 +85,8 @@ namespace TextBox.MVCClient.Models
          cost=cost+o.Books.Cost;
           
         }
+        System.Console.WriteLine("printer here");
+        System.Console.WriteLine(cost);
         return cost;
       }
   }

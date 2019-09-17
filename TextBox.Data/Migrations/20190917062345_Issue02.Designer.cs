@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TextBox.Data;
 
 namespace TextBox.Data.Migrations
 {
     [DbContext(typeof(TextBoxDBContext))]
-    partial class TextBoxDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190917062345_Issue02")]
+    partial class Issue02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -310,12 +312,12 @@ namespace TextBox.Data.Migrations
 
             modelBuilder.Entity("TextBox.Domain.Models.BooksOnOrder", b =>
                 {
-                    b.HasOne("TextBox.Domain.Models.Book", "Books")
+                    b.HasOne("TextBox.Domain.Models.Order", "Order")
                         .WithMany("BooksOnOrder")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TextBox.Domain.Models.Order", "Order")
+                    b.HasOne("TextBox.Domain.Models.Book", "Books")
                         .WithMany("BooksOnOrder")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
