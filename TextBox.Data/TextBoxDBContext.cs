@@ -53,8 +53,8 @@ namespace TextBox.Data
         // builder.Entity<BooksInCart>().HasOne(x=>x.Books).WithMany(b=>b.BooksInCart).HasForeignKey(x => x.BookId);
 
         builder.Entity<BooksOnOrder>().HasKey(x=> new{x.BookId, x.OrderId});
-        builder.Entity<BooksOnOrder>().HasOne(x=>x.Order).WithMany(o=>o.BooksOnOrder).HasForeignKey(x => x.BookId);
-        builder.Entity<BooksOnOrder>().HasOne(x=>x.Books).WithMany(o=>o.BooksOnOrder).HasForeignKey(x => x.OrderId);
+        builder.Entity<BooksOnOrder>().HasOne(x=>x.Order).WithMany(o=>o.BooksOnOrder).HasForeignKey(x => x.OrderId);
+        builder.Entity<BooksOnOrder>().HasOne(x=>x.Books).WithMany(o=>o.BooksOnOrder).HasForeignKey(x => x.BookId);
 
         builder.Entity<Cart>().HasKey(x=> new{x.Id, x.UserId});
         

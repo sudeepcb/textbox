@@ -18,10 +18,11 @@ namespace TextBox.MVCClient.Controllers
           c.bookToCart(filterName);
             return View(c);
         }
-        
-        public IActionResult Privacy()
+
+        public IActionResult End()
         {
-            return View();
+            //c.end();    
+            return View(); 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
