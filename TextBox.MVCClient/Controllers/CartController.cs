@@ -14,7 +14,6 @@ namespace TextBox.MVCClient.Controllers
         CartModel c = new CartModel();
         public IActionResult Detail(int filterName)
         {
-          System.Console.WriteLine(filterName);
           c.bookToCart(filterName);
             return View(c);
         }
