@@ -1,0 +1,96 @@
+
+
+<style>
+.cartstyle{
+  background-color: lightcyan;
+	margin-top:10px;
+  margin-left: 30px;
+	border: green medium solid;
+  border-width: 3px;
+  padding: 20px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+.pricestyle{
+  background-color: black;
+  color: white;
+	margin-top:10px;
+  margin-left: 30px;
+  width: auto;
+  height: auto;
+	border: lightgreen medium solid;
+  border-width: 3px;
+  padding: 20px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+.mainbutton {
+  overflow:auto;
+  color: white;
+  position: relative;
+  background-color: lightcyan;
+  left: 45%;
+  border: black medium solid;
+  border-radius: 10%;
+	-moz-border-radius: 10%;
+	-webkit-border-radius: 10%;
+
+}
+
+</style>
+<h1 class = "text-center"> Cart Page </h1>
+<br>
+<div class="container">
+            <div class="row d-flex justify-content-center text-center">
+              <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div>
+              <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div>
+              <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div>
+              <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div>
+               <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div> <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div> <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div> <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div> <div class="col-sm-2 cartstyle">
+                <p>Book Title</p>
+                <p>Book Price</p>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="d-flex justify-content-center"><p class = "pricestyle"><b>Total Price: $10.00</b></p></div>
+            </div>
+            <button type="button" class="mainbutton btn btn-info btn-lg">
+                @{var useBookId = 10;}
+                <small>@Html.ActionLink(
+                linkText : "Complete Carts",
+                actionName: "FinalCart",
+                controllerName: "Order",
+                routeValues: new{
+                  filterName = useBookId
+                },
+                htmlAttributes: null
+                )</small></button>
+            </div>
+</div> 
