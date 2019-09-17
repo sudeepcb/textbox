@@ -48,34 +48,6 @@
                 <p>Book Title</p>
                 <p>Book Price</p>
               </div>
-              <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div>
-              <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div>
-              <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div>
-               <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div> <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div> <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div> <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div> <div class="col-sm-2 cartstyle">
-                <p>Book Title</p>
-                <p>Book Price</p>
-              </div>
             </div>
             <br>
             <br>
@@ -85,8 +57,8 @@
                 @{var useBookId = 10;}
                 <small>@Html.ActionLink(
                 linkText : "Complete Carts",
-                actionName: "FinalCart",
-                controllerName: "Order",
+                actionName: "End",
+                controllerName: "Cart",
                 routeValues: new{
                   filterName = useBookId
                 },
