@@ -14,7 +14,7 @@ namespace TextBox.MVCClient.Models
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
-    public double TotalCost {get; set;}
+    public decimal TotalCost {get; set;}
     
     public void bookToCart(int filter)
     {
@@ -22,7 +22,7 @@ namespace TextBox.MVCClient.Models
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
-      setBookList();
+      
 
       System.Console.WriteLine("\n\n\n\n\nThis is what your want: "+filter+"\n\n\n\n\n");
       
@@ -58,6 +58,8 @@ namespace TextBox.MVCClient.Models
           //userCart.Order.TotalCost=currentcost()+b.Cost;
           _db.BooksOnOrder.Add(userCart);
           _db.SaveChanges();
+          setBookList();
+          TotalCost=currentcost();
         }
       }
     }
@@ -78,12 +80,10 @@ namespace TextBox.MVCClient.Models
       public decimal currentcost()
       {
         decimal cost=0.0m;
-        foreach (var o in _db.Orders.ToList())
+        foreach (var o in _db.BooksOnOrder.ToList())
         {
-          if(o.Id == 3)
-          {
-            cost=o.TotalCost;
-          }
+         cost=cost+o.Books.Cost;
+          
         }
         return cost;
       }
