@@ -58,8 +58,10 @@ namespace TextBox.MVCClient.Models
         }
       }
     }
+    
     public void setBookList()
       {
+        booksList = new List<Book>();
         
       foreach (var bO in _db.BooksOnOrder.ToList())
         {
