@@ -225,7 +225,7 @@ namespace TextBox.Tests
         BookGenres bg2 = new BookGenres();
         Genre g2 = new Genre();
 
-        g2.GenreName = "testGenre1";
+        g2.GenreName = "Sci-Fi";
         bg2.Genres = g2;
 
         b1.BookGenres.Add(bg1);
@@ -239,11 +239,11 @@ namespace TextBox.Tests
 
         Expectedlib.Add(b1);
 
-        lm.SearchGenre("testGenre");
+        lm.SearchGenre("Sci-Fi");
 
         Assert.NotNull(lm.library);
         Assert.IsType<List<Book>>(lm.library);
-        //Assert.True(Expectedlib.Any() == lm.library.Any());
+        Assert.True(Expectedlib.Any() == lm.library.Any());
       }
     }
 }
