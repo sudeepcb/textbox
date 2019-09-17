@@ -57,7 +57,7 @@ namespace TextBox.MVCClient
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Book}/{action=Create}/{id?}");
+                    template: "{controller=Library}/{action=Home}");
             });
         }
     }
