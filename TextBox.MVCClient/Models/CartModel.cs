@@ -52,6 +52,8 @@ namespace TextBox.MVCClient.Models
           userCart = new BooksOnOrder();
           userCart.Order=userOrder;
           userCart.Books=b;
+          userCart.OrderId=userOrder.Id;
+          userCart.BookId=b.Id;
           userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
           _db.BooksOnOrder.Add(userCart);
           _db.SaveChanges();
@@ -69,6 +71,18 @@ namespace TextBox.MVCClient.Models
             {booksList.Add(b);}
           }
         }
+      }
+      public decimal currentcost()
+      {
+        decimal cost=0.0m;
+        foreach (var o in _db.Orders.ToList())
+        {
+          if(o.Id == 3)
+          {
+            cost=o.TotalCost;
+          }
+        }
+        return cost;
       }
   }
 }

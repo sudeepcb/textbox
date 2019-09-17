@@ -19,8 +19,9 @@ namespace TextBox.MVCClient.Controllers
             return View(c);
         }
         
-        public IActionResult Privacy()
+        public IActionResult End()
         {
+            c.end();          
             return View();
         }
 
