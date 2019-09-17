@@ -22,17 +22,24 @@ namespace TextBox.MVCClient.Models
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
-      allAuthors = _db.Authors.ToList();
-      setBookList();
+      //setBookList();
 
       System.Console.WriteLine("\n\n\n\n\nThis is what your want: "+filter+"\n\n\n\n\n");
       
       if (userCart==null)
       {
         userOrder = new Order();
-        userOrder.UserId=1;
+        //userOrder.UserId=1;
+        foreach (var u in _db.Users.ToList())
+        {
+          if (u.Id==3)
+          {
+            User u1 = new User();
+            u1.Username = "TestUser";
+            userOrder.User=u1;
+          }
+        }
         TotalCost = 0.0;
-        _db.Orders.Add(userOrder);
       }
 
        foreach (var b in _db.Books.ToList())
@@ -41,8 +48,6 @@ namespace TextBox.MVCClient.Models
         {
           System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
           userCart = new BooksOnOrder();
-          userCart.OrderId=userOrder.Id;
-          userCart.BookId=b.Id;
           userCart.Order=userOrder;
           userCart.Books=b;
           userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
