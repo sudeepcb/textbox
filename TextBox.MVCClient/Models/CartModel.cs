@@ -22,11 +22,11 @@ namespace TextBox.MVCClient.Models
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
-      //setBookList();
+      setBookList();
 
       System.Console.WriteLine("\n\n\n\n\nThis is what your want: "+filter+"\n\n\n\n\n");
       
-      if (userCart==null)
+      if (booksList==null)
       {
         userOrder = new Order();
         //userOrder.UserId=1;
@@ -35,8 +35,10 @@ namespace TextBox.MVCClient.Models
           if (u.Id==3)
           {
             User u1 = new User();
-            u1.Username = "TestUser";
+            //u1.Username = "TestUser";
             userOrder.User=u1;
+            Review r = new Review();
+            userOrder.User.Review = r;
           }
         }
         TotalCost = 0.0;
@@ -61,7 +63,11 @@ namespace TextBox.MVCClient.Models
         
       foreach (var bO in _db.BooksOnOrder.ToList())
         {
-          booksList.Add(bO.Books); 
+          foreach (var b in _db.Books.ToList())
+          {
+            if (bO.BookId==b.Id)
+            {booksList.Add(b);}
+          }
         }
       }
   }
