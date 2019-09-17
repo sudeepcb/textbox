@@ -9,7 +9,7 @@ namespace TextBox.MVCClient.Models
   {
     public TextBoxDBContext _db = new TextBoxDBContext();
     public static BooksOnOrder userCart {get; set;} 
-    public static Order Order {get; set;}
+    public static Order userOrder {get; set;}
     public List<Book> booksList {get;set;}
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 
@@ -29,22 +29,25 @@ namespace TextBox.MVCClient.Models
       
       if (userCart==null)
       {
-        Order = new Order();
+        userOrder = new Order();
+        userOrder.UserId=1;
         TotalCost = 0.0;
+        _db.Orders.Add(userOrder);
       }
 
        foreach (var b in _db.Books.ToList())
        {
            if (b.Id==filter)
-         {
-            System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
-            userCart = new BooksOnOrder();
-            userCart.OrderId=Order.Id;
-            userCart.BookId=b.Id;
-            userCart.Order=Order;
-            userCart.Books=b;
-            userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
-            _db.BooksOnOrder.Add(userCart);
+        {
+          System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
+          userCart = new BooksOnOrder();
+          userCart.OrderId=userOrder.Id;
+          userCart.BookId=b.Id;
+          userCart.Order=userOrder;
+          userCart.Books=b;
+          userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
+          _db.BooksOnOrder.Add(userCart);
+          _db.SaveChanges();
         }
       }
     }
