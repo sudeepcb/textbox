@@ -11,9 +11,9 @@ namespace TextBox.Domain.Models
         public User User {get; set;}
         public virtual ICollection<BooksOnOrder> BooksOnOrder { get; set; }
     
-        Order()
-        {
-          List<Book> BooksOnOrder = new List<Book>();
-        }
+        // Order()
+        // {
+        //   List<Book> BooksOnOrder = new List<Book>();
+        // }
     }
 }

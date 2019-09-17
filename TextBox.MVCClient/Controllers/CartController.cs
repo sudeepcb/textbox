@@ -4,15 +4,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TextBox.Domain.Models;
 using TextBox.MVCClient.Models;
 
 namespace TextBox.MVCClient.Controllers
 {
     public class CartController : Controller
     {
-        public IActionResult Cart()
+        CartModel c = new CartModel();
+        public IActionResult Detail(int filterName)
         {
-            return View();
+          c.bookToCart(filterName);
+            return View(c);
         }
         
         public IActionResult Privacy()
