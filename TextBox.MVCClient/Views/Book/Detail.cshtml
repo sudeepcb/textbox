@@ -121,7 +121,7 @@
       @{var useBookId = @Model.bookreturn.Id;}
       <span class="glyphicon glyphicon-shopping-cart" style = "color:white; font-size:1vw"><large>@Html.ActionLink(
        linkText : "Add to Cart",
-       actionName: "ViewCart",
+       actionName: "Cart",
        controllerName: "Cart",
        routeValues: new{
          filterName = useBookId
