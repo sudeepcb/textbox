@@ -10,9 +10,11 @@ namespace TextBox.MVCClient.Models
     public TextBoxDBContext _db = new TextBoxDBContext();
     public static BooksOnOrder userCart {get; set;} 
     public static Order Order {get; set;}
+    public List<Book> booksList {get;set;}
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 
     public List<Author> allAuthors { get; set; }
+    public double TotalCost {get; set;}
     
     public void bookToCart(int filter)
     {
@@ -21,11 +23,14 @@ namespace TextBox.MVCClient.Models
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
       allAuthors = _db.Authors.ToList();
-      System.Console.WriteLine("\n\n\n\n\n"+filter+"\n\n\n\n\n");
+      setBookList();
+
+      System.Console.WriteLine("\n\n\n\n\nThis is what your want: "+filter+"\n\n\n\n\n");
       
       if (userCart==null)
       {
         Order = new Order();
+        TotalCost = 0.0;
       }
 
        foreach (var b in _db.Books.ToList())
@@ -38,9 +43,18 @@ namespace TextBox.MVCClient.Models
             userCart.BookId=b.Id;
             userCart.Order=Order;
             userCart.Books=b;
+            userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
             _db.BooksOnOrder.Add(userCart);
         }
       }
     }
+    public void setBookList()
+      {
+        
+      foreach (var bO in _db.BooksOnOrder.ToList())
+        {
+          booksList.Add(bO.Books); 
+        }
+      }
   }
 }

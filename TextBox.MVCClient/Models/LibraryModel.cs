@@ -85,7 +85,6 @@ namespace TextBox.MVCClient.Models
     { 
       library= new List<Book>();
       
-      System.Console.WriteLine("\n\n\n\n\n We made it author! \n\n\n\n\n");
       foreach(var a in _db.Authors.ToList())
       { if(a.FirstName.ToLower()==name.ToLower())
         {
