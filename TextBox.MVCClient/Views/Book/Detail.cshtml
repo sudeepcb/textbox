@@ -88,29 +88,32 @@
 </div>
 <div class = "container">
 <div class = "bookcover">
-<p style = "color:white; font-size:3vw">The Prisonzor of Azakaban</p>
+<p style = "text-align: center; color:white; font-size:2vw">@Model.bookreturn.Title</p>
+<br>
+<br>
+<p style = "text-align: center; color:white; font-size:1.5vw">@Model.authorreturn.FirstName @Model.authorreturn.LastName</p>
 </div>
 </div>
 <br>
 <div class="container">
 <div class = "mainbook">
 <div class =  "d-flex justify-content-around">
-<small>@Model.authorreturn.FirstName @Model.authorreturn.LastName</small>
+<small>Author: @Model.authorreturn.FirstName @Model.authorreturn.LastName</small>
 </div>
 <div class =  "d-flex justify-content-around">
-<small>Publisher</small>
+<small>Publisher: @Model.bookreturn.Publisher</small>
 </div>
 <div class =  "d-flex justify-content-around">
-<small>1231-2312-39</small>
+<small> @Model.bookreturn.ISBN</small>
 </div>
 <div class =  "d-flex justify-content-center">
-<small>Author</small>
+<small>Pages: @Model.bookreturn.Pages</small>
 </div>
 <div class =  "d-flex justify-content-around">
-<small>Publisher</small>
+<small>Release: @Model.bookreturn.ReleaseDate</small>
 </div>
 <div class =  "d-flex justify-content-around">
-<small>ISBN</small>
+<small>Price: $@Model.bookreturn.Cost</small>
 </div>
 </div>
 </div>
@@ -119,7 +122,7 @@
   <div class = "container">
   <div class = "mainsummary">
     <p style = "color:black; font-size:1.5vw"><b>Synopsis:</b><p>
-    <p style = "color:black; font-size:1.5vw">The Prisonzor asdsad asdsa das dsad sadas asdsa  asd asdsa  sadas dsad adsa da of Azakaban of the whole world in this class askjhdsa kjhdkj ashdjk sahdkjas hdkjsahd  kjshdksa hdka shjkds asdsadn  asdsadsad aadsadasd asdsadsa ssadsadsads</p>
+    <p style = "color:black; font-size:1.5vw">@Model.bookreturn.Synopsis</p>
   </div>
   </div>
 </div>
