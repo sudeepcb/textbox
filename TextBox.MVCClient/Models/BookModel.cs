@@ -16,7 +16,6 @@ namespace TextBox.MVCClient.Models
     
     public void returnBook(int filter)
     {
-      System.Console.WriteLine(filter);
       bookreturn = new Book();
       authorreturn = new Author();
       allGenres = _db.Genres.ToList();
@@ -29,9 +28,6 @@ namespace TextBox.MVCClient.Models
         
         if (b.Id==filter)
         {
-          System.Console.WriteLine("SHOULD PRINT HERE");
-          System.Console.WriteLine(bookreturn.Id);
-          System.Console.WriteLine(filter);
           bookreturn=b;
           foreach (var ba in _db.BooksAuthors.ToList())
           {

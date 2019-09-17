@@ -14,8 +14,6 @@ namespace TextBox.MVCClient.Controllers
         BookModel b = new BookModel();
         public IActionResult Detail(int filterName)
         {
-          System.Console.WriteLine("Entered detail action");
-          System.Console.WriteLine(filterName);
           b.returnBook(filterName);
             return View(b);
         }

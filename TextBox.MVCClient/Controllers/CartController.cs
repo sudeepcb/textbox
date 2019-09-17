@@ -12,8 +12,9 @@ namespace TextBox.MVCClient.Controllers
     public class CartController : Controller
     {
         CartModel c = new CartModel();
-        public IActionResult Detail(int filterName)
+        public IActionResult ViewCart(int filterName)
         {
+          System.Console.WriteLine("\n\n\n\n\n"+filterName+"\n\n\n\n\n");
           c.bookToCart(filterName);
             return View(c);
         }
