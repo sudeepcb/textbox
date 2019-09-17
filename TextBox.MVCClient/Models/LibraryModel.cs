@@ -68,7 +68,7 @@ namespace TextBox.MVCClient.Models
         System.Console.WriteLine("\n\n\n\n\n"+g.GenreName.ToLower()+"\n\n\n\n\n");
         if(g.GenreName.ToLower()==name.ToLower())
         {
-          foreach(var bg in _db.BooksGenres)
+          foreach(var bg in _db.BooksGenres.ToList())
           {System.Console.WriteLine("\n\n\n\n\n "+bg.Books.Title+" \n\n\n\n\n");
       
               if (bg.Genres.Id == g.Id)
