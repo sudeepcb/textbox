@@ -9,7 +9,7 @@ namespace TextBox.MVCClient.Models
   {
     public TextBoxDBContext _db = new TextBoxDBContext();
     public static BooksOnOrder userCart {get; set;} 
-    public static Order Order {get; set;}
+    public static Order userOrder {get; set;}
     public List<Book> booksList {get;set;}
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 
@@ -22,29 +22,39 @@ namespace TextBox.MVCClient.Models
       allGenres = _db.Genres.ToList();
       allAuthors = _db.Authors.ToList();
       allSeries = _db.Seriess.ToList();
-      allAuthors = _db.Authors.ToList();
       setBookList();
 
       System.Console.WriteLine("\n\n\n\n\nThis is what your want: "+filter+"\n\n\n\n\n");
       
-      if (userCart==null)
+      if (booksList==null)
       {
-        Order = new Order();
+        userOrder = new Order();
+        //userOrder.UserId=1;
+        foreach (var u in _db.Users.ToList())
+        {
+          if (u.Id==3)
+          {
+            User u1 = new User();
+            //u1.Username = "TestUser";
+            userOrder.User=u1;
+            Review r = new Review();
+            userOrder.User.Review = r;
+          }
+        }
         TotalCost = 0.0;
       }
 
        foreach (var b in _db.Books.ToList())
        {
            if (b.Id==filter)
-         {
-            System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
-            userCart = new BooksOnOrder();
-            userCart.OrderId=Order.Id;
-            userCart.BookId=b.Id;
-            userCart.Order=Order;
-            userCart.Books=b;
-            userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
-            _db.BooksOnOrder.Add(userCart);
+        {
+          System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
+          userCart = new BooksOnOrder();
+          userCart.Order=userOrder;
+          userCart.Books=b;
+          userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
+          _db.BooksOnOrder.Add(userCart);
+          _db.SaveChanges();
         }
       }
     }
@@ -53,7 +63,11 @@ namespace TextBox.MVCClient.Models
         
       foreach (var bO in _db.BooksOnOrder.ToList())
         {
-          booksList.Add(bO.Books); 
+          foreach (var b in _db.Books.ToList())
+          {
+            if (bO.BookId==b.Id)
+            {booksList.Add(b);}
+          }
         }
       }
   }

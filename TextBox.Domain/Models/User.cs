@@ -15,7 +15,7 @@ namespace TextBox.Domain.Models
         public Review Review { get; set; }
         public virtual ICollection<Book> BooksInOrder { get; set; }
 
-        User()
+        public User()
         {
           List<Order> OrderHistory = new List<Order>();
         }
