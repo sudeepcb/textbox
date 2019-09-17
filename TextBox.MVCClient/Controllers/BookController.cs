@@ -12,9 +12,11 @@ namespace TextBox.MVCClient.Controllers
     public class BookController : Controller
     {
         BookModel b = new BookModel();
-        public IActionResult Detail(int bookId)
+        public IActionResult Detail(int filterName)
         {
-          b.returnBook(bookId);
+          System.Console.WriteLine("Entered detail action");
+          System.Console.WriteLine(filterName);
+          b.returnBook(filterName);
             return View(b);
         }
         [HttpGet]
