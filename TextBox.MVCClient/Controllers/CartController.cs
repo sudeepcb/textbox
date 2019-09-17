@@ -21,7 +21,7 @@ namespace TextBox.MVCClient.Controllers
         
         public IActionResult End()
         {
-            c.end();          
+            //c.end();          
             return View();
         }
 

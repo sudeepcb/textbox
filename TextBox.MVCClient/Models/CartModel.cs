@@ -26,23 +26,20 @@ namespace TextBox.MVCClient.Models
 
       System.Console.WriteLine("\n\n\n\n\nThis is what your want: "+filter+"\n\n\n\n\n");
       
-      if (booksList==null)
-      {
-        userOrder = new Order();
-        //userOrder.UserId=1;
-        foreach (var u in _db.Users.ToList())
-        {
-          if (u.Id==3)
-          {
-            User u1 = new User();
-            //u1.Username = "TestUser";
-            userOrder.User=u1;
-            Review r = new Review();
-            userOrder.User.Review = r;
-          }
-        }
-        TotalCost = 0.0;
-      }
+      // if (booksList==null)
+      // {
+      //   userCart = new BooksOnOrder();
+      //   //userOrder.UserId=1;
+      //   foreach (var u in _db.Users.ToList())
+      //   {
+      //     if (u.Id==2)
+      //     {
+      //       userCart.OrderId=u.Order.Id;
+      //       userOrder=u.Order;
+      //     }
+      //   }
+      //   TotalCost = 0.0;
+      // }
 
        foreach (var b in _db.Books.ToList())
        {
@@ -50,11 +47,15 @@ namespace TextBox.MVCClient.Models
         {
           System.Console.WriteLine("\n\n\n\n\n"+b.Title+"\n\n\n\n\n");
           userCart = new BooksOnOrder();
+          userCart.OrderId=1;
+          userCart.BookId=b.Id;
           userCart.Order=userOrder;
           userCart.Books=b;
-          userCart.OrderId=userOrder.Id;
+          System.Console.WriteLine("\n\n\n\n\n"+userCart.BookId+"\n\n\n\n\n");
+          System.Console.WriteLine("\n\n\n\n\n"+userCart.OrderId+"\n\n\n\n\n");
+          // userCart.OrderId=userOrder.Id;
           userCart.BookId=b.Id;
-          userCart.Order.TotalCost=userCart.Order.TotalCost+b.Cost;
+          //userCart.Order.TotalCost=currentcost()+b.Cost;
           _db.BooksOnOrder.Add(userCart);
           _db.SaveChanges();
         }
