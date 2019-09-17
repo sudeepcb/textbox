@@ -60,19 +60,22 @@ namespace TextBox.MVCClient.Models
 
     public void SearchGenre(string name)
     {
-      System.Console.WriteLine("\n\n\n\n\n We made it genre! \n\n\n\n\n");
       library= new List<Book>();
-      System.Console.WriteLine("\n\n\n\n\n"+name.ToLower()+"\n\n\n\n\n");
+      
       foreach(var g in _db.Genres.ToList())
       {
-        System.Console.WriteLine("\n\n\n\n\n"+g.GenreName.ToLower()+"\n\n\n\n\n");
         if(g.GenreName.ToLower()==name.ToLower())
         {
           foreach(var bg in _db.BooksGenres.ToList())
-          {System.Console.WriteLine("\n\n\n\n\n "+bg.Books.Title+" \n\n\n\n\n");
-      
-              if (bg.Genres.Id == g.Id)
-              {library.Add(bg.Books);}
+          {
+            if (g.Id == bg.GenreId)
+            {  
+              foreach(var b in _db.Books)
+              {
+                if (bg.BookId == b.Id)
+                {library.Add(b);}
+              }
+            }
           }
         }
       }
@@ -96,14 +99,23 @@ namespace TextBox.MVCClient.Models
     }
     public void SearchSeries(string name)
     {
-      System.Console.WriteLine("\n\n\n\n\n We made it series! \n\n\n\n\n");
       library= new List<Book>();
-     
-      foreach(var bs in _db.BookInSeries.ToList())
+      
+      foreach(var s in _db.Seriess.ToList())
       {
-        if (bs.Series.SeriesName==name)
+        if(s.SeriesName.ToLower()==name.ToLower())
         {
-          library.Add(bs.Books);
+          foreach(var bs in _db.BookInSeries.ToList())
+          {
+            if (s.Id == bs.SeriesId)
+            {  
+              foreach(var b in _db.Books)
+              {
+                if (bs.BookId == b.Id)
+                {library.Add(b);}
+              }
+            }
+          }
         }
       }
     }
