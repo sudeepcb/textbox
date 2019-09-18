@@ -77,11 +77,8 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - task: AzureWebAppContainer@1
-            inputs:
-              azureSubscription: 'Free Trial(2)(4102dfd4-77c4-4286-99f6-cfda9ebf0c88)'
-              appName: 'textboxisit'
-              containers: 'keiloconnor91/textboxp2'
+           - script: |
+              echo 'enter deploy stage'
           
 
 trigger:
