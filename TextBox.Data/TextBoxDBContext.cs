@@ -22,7 +22,7 @@ namespace TextBox.Data
       
       protected override void OnConfiguring(DbContextOptionsBuilder builder)
       {
-        builder.UseSqlServer("Server=tcp:keilpizza.database.windows.net,1433;Initial Catalog=TextBoxDB;Persist Security Info=False;User ID=sqladmin;Password=Password12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        builder.UseSqlServer("Server=tcp:sucbaniy.database.windows.net,1433;Initial Catalog=TextBox;Persist Security Info=False;User ID=sqlserver;Password=Password12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
       }
       
       protected override void OnModelCreating(ModelBuilder builder)
