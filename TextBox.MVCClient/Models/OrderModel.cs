@@ -7,7 +7,7 @@ namespace TextBox.MVCClient.Models
 {
   public class OrderModel
   {
-    public TextBoxDBContext _db = new TextBoxDBContext();
+    private TextBoxDBContext _db = new TextBoxDBContext();
     public List<Book> library {get; set;}
     public List<Genre> allGenres {get; set; }
     public List<Series> allSeries {get; set; } 

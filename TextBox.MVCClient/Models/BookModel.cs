@@ -7,7 +7,7 @@ namespace TextBox.MVCClient.Models
 {
   public class BookModel
   {
-    public TextBoxDBContext _db = new TextBoxDBContext();
+    private TextBoxDBContext _db = new TextBoxDBContext();
     public Book bookreturn {get; set;}
     public Author authorreturn {get; set;}
     public List<Genre> allGenres {get; set; }

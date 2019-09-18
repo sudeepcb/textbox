@@ -7,7 +7,7 @@ namespace TextBox.MVCClient.Models
 {
   public class CartModel
   {
-    public TextBoxDBContext _db = new TextBoxDBContext();
+    private TextBoxDBContext _db = new TextBoxDBContext();
     public static BooksOnOrder userCart {get; set;} 
     public static Order userOrder {get; set;}
     public List<Book> booksList {get;set;}
